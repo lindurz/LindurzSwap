@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Lindurz Documentation - Multi-Chain DEX</title>
+  <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --primary-bera: #F59E0B;
+      --primary-monad: #3B82F6;
+      --primary-ronin: #8247E5;
+      --text: #1a1a1a;
+      --text-muted: #666;
+      --bg: #ffffff;
+      --sidebar-bg: #f8f9fa;
+      --border: #e9ecef;
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{
+      font-family:'Kanit',sans-serif;
+      background:var(--bg);
+      color:var(--text);
+      line-height:1.6;
+    }
+    .container{
+      display:flex;
+      min-height:100vh;
+    }
+    /* Sidebar */
+    .sidebar{
+      width:280px;
+      background:var(--sidebar-bg);
+      border-right:1px solid var(--border);
+      padding:2rem 1rem;
+      position:fixed;
+      height:100vh;
+      overflow-y:auto;
+    }
+    .logo{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      margin-bottom:2rem;
+      text-decoration:none;
+    }
+    .logo img{
+      width:40px;
+      height:40px;
+      border-radius:8px;
+    }
+    .logo span{
+      font-weight:700;
+      font-size:1.2rem;
+      background:linear-gradient(135deg, var(--primary-bera), var(--primary-monad), var(--primary-ronin));
+      -webkit-background-clip:text;
+      -webkit-text-fill-color:transparent;
+    }
+    .nav-section{
+      margin-bottom:2rem;
+    }
+    .nav-title{
+      font-weight:600;
+      font-size:0.9rem;
+      color:var(--text-muted);
+      margin-bottom:0.5rem;
+      text-transform:uppercase;
+      letter-spacing:0.5px;
+    }
+    .nav-link{
+      display:block;
+      padding:0.5rem 0.75rem;
+      color:var(--text);
+      text-decoration:none;
+      border-radius:6px;
+      margin-bottom:0.25rem;
+      transition:all 0.2s;
+      font-size:0.95rem;
+    }
+    .nav-link:hover{
+      background:rgba(0,0,0,0.05);
+    }
+    .nav-link.active{
+      background:linear-gradient(135deg, var(--primary-bera), var(--primary-monad), var(--primary-ronin));
+      color:white;
+    }
+    /* Main Content */
+    .main-content{
+      flex:1;
+      margin-left:280px;
+      padding:3rem 4rem;
+      max-width:900px;
+    }
+    .docs-header{
+      margin-bottom:3rem;
+    }
+    .docs-title{
+      font-size:3rem;
+      font-weight:800;
+      margin-bottom:1rem;
+      background:linear-gradient(135deg, var(--primary-bera), var(--primary-monad), var(--primary-ronin));
+      -webkit-background-clip:text;
+      -webkit-text-fill-color:transparent;
+    }
+    .docs-subtitle{
+      font-size:1.2rem;
+      color:var(--text-muted);
+      margin-bottom:2rem;
+    }
+    /* Content Sections */
+    .section{
+      margin-bottom:3rem;
+    }
+    .section-title{
+      font-size:2rem;
+      font-weight:700;
+      margin-bottom:1.5rem;
+      padding-bottom:0.5rem;
+      border-bottom:2px solid var(--border);
+    }
+    .section-subtitle{
+      font-size:1.4rem;
+      font-weight:600;
+      margin:2rem 0 1rem;
+      color:var(--primary-ronin);
+    }
+    .card{
+      background:var(--sidebar-bg);
+      border:1px solid var(--border);
+      border-radius:12px;
+      padding:2rem;
+      margin-bottom:1.5rem;
+    }
+    .card-title{
+      font-size:1.3rem;
+      font-weight:600;
+      margin-bottom:1rem;
+      display:flex;
+      align-items:center;
+      gap:0.5rem;
+    }
+    .info-box{
+      background:#e7f3ff;
+      border:1px solid #b3d9ff;
+      border-radius:8px;
+      padding:1.5rem;
+      margin:1.5rem 0;
+    }
+    .info-box.warning{
+      background:#fff3cd;
+      border-color:#ffeaa7;
+    }
+    /* Code Blocks */
+    .code-block{
+      background:#1a1a1a;
+      color:#f8f9fa;
+      border-radius:8px;
+      padding:1.5rem;
+      margin:1.5rem 0;
+      overflow-x:auto;
+      font-family:'Courier New', monospace;
+    }
+    .contract-address{
+      background:#f8f9fa;
+      border:1px solid var(--border);
+      border-radius:8px;
+      padding:1rem;
+      margin:0.5rem 0;
+      font-family:'Courier New', monospace;
+      font-size:0.9rem;
+    }
+    .chain-badge{
+      display:inline-flex;
+      align-items:center;
+      gap:0.5rem;
+      padding:0.5rem 1rem;
+      border-radius:20px;
+      font-size:0.9rem;
+      font-weight:500;
+      margin-right:0.5rem;
+      margin-bottom:0.5rem;
+    }
+    .badge-bera{ background:#F59E0B; color:#1a1a1a; }
+    .badge-monad{ background:#3B82F6; color:white; }
+    .badge-ronin{ background:#8247E5; color:white; }
+    /* Responsive */
+    @media (max-width: 768px){
+      .container{ flex-direction:column; }
+      .sidebar{ position:static; width:100%; height:auto; }
+      .main-content{ margin-left:0; padding:2rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- Sidebar Navigation -->
+    <nav class="sidebar">
+      <a href="/" class="logo">
+        <img src="https://lindurz.xyz/assets/ldrz.png" alt="Lindurz">
+        <span>Lindurz</span>
+      </a>
+
+      <div class="nav-section">
+        <div class="nav-title">Getting Started</div>
+        <a href="#overview" class="nav-link active">Overview</a>
+        <a href="#architecture" class="nav-link">Architecture</a>
+        <a href="#security" class="nav-link">Security</a>
+      </div>
+
+      <div class="nav-section">
+        <div class="nav-title">Smart Contracts</div>
+        <a href="#contracts-ronin" class="nav-link">Ronin Contracts</a>
+        <a href="#contracts-bera" class="nav-link">Berachain Contracts</a>
+        <a href="#contracts-monad" class="nav-link">Monad Contracts</a>
+      </div>
+
+      <div class="nav-section">
+        <div class="nav-title">API Reference</div>
+        <a href="#api-overview" class="nav-link">API Overview</a>
+        <a href="#api-endpoints" class="nav-link">Endpoints</a>
+      </div>
+
+      <div class="nav-section">
+        <div class="nav-title">Guides</div>
+        <a href="#adding-liquidity" class="nav-link">Adding Liquidity</a>
+        <a href="#token-listing" class="nav-link">Token Listing</a>
+      </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <header class="docs-header">
+        <h1 class="docs-title">Lindurz Documentation</h1>
+        <p class="docs-subtitle">Complete guide to Lindurz Multi-Chain DEX</p>
+      </header>
+
+      <!-- Overview Section -->
+      <section id="overview" class="section">
+        <h2 class="section-title">Overview</h2>
+        <p>Lindurz is a decentralized exchange supporting multiple blockchain networks including Ronin, Berachain, and Monad.</p>
+        
+        <div class="info-box">
+          <strong>🚀 Current Status:</strong> Lindurz is live on multiple testnets with mainnet launch coming soon.
+        </div>
+
+        <h3 class="section-subtitle">Supported Chains</h3>
+        <div>
+          <span class="chain-badge badge-ronin">🎮 Ronin</span>
+          <span class="chain-badge badge-bera">🐻 Berachain</span>
+          <span class="chain-badge badge-monad">⚡ Monad</span>
+        </div>
+      </section>
+
+      <!-- Architecture Section -->
+      <section id="architecture" class="section">
+        <h2 class="section-title">System Architecture</h2>
+        
+        <div class="card">
+          <h3 class="card-title">📚 Core Contracts</h3>
+          <p><strong>Router:</strong> Handles all swap operations and routing logic</p>
+          <p><strong>Factory:</strong> Creates and manages trading pairs</p>
+          <p><strong>Pair:</strong> Manages liquidity pools and token pairs</p>
+        </div>
+
+        <div class="card">
+          <h3 class="card-title">🔄 Swap Mechanism</h3>
+          <p>Constant product formula (x*y=k) with 0.25% trading fees</p>
+        </div>
+      </section>
+
+      <!-- Security Section -->
+      <section id="security" class="section">
+        <h2 class="section-title">Security</h2>
+        
+        <div class="info-box warning">
+          <strong>⚠️ Important:</strong> Contracts are currently undergoing security review. Use at your own risk.
+        </div>
+
+        <div class="card">
+          <h3 class="card-title">🛡️ Security Status</h3>
+          <p>✅ <strong>Open Source:</strong> All contracts are publicly verifiable</p>
+          <p>🔄 <strong>Community Review:</strong> Ongoing security review by community</p>
+          <p>📋 <strong>Audit Planned:</strong> Formal audit process scheduled</p>
+        </div>
+
+        <div class="card">
+          <h3 class="card-title">🔒 Security Features</h3>
+          <p>• Reentrancy protection</p>
+          <p>• Input validation checks</p>
+          <p>• Safe math operations</p>
+          <p>• Emergency pause functionality</p>
+        </div>
+      </section>
+
+      <!-- Ronin Contracts Section -->
+      <section id="contracts-ronin" class="section">
+        <h2 class="section-title">Ronin Contracts</h2>
+        
+        <div class="card">
+          <h3 class="card-title">🎮 Core Contracts</h3>
+          
+          <p><strong>Router</strong></p>
+          <div class="contract-address">0xb19E8deB507DC3C0259CAd97D37Da4e66eaCE91d</div>
+          
+          <p><strong>Factory</strong></p>
+          <div class="contract-address">0x148Ab79e0E877d632d5a59563abE78461a1942E0</div>
+          
+          <p><strong>WRON (Wrapped RON)</strong></p>
+          <div class="contract-address">0xe514d9deb7966c8be0ca922de8a064264ea6bcd4</div>
+        </div>
+
+        <div class="card">
+          <h3 class="card-title">💎 Token Addresses</h3>
+          
+          <p><strong>USDC</strong></p>
+          <div class="contract-address">0x0b7007c13325c48911f73a2dad5fa5dcbf808adc</div>
+          
+          <p><strong>LDRZ (Coming Soon)</strong></p>
+          <div class="contract-address">Address will be announced before launch</div>
+        </div>
+      </section>
+
+      <!-- API Section -->
+      <section id="api-overview" class="section">
+        <h2 class="section-title">API Reference</h2>
+        
+        <div class="card">
+          <h3 class="card-title">🌐 API Base URL</h3>
+          <div class="code-block">https://api.lindurz.xyz/v1</div>
+        </div>
+
+        <h3 class="section-subtitle" id="api-endpoints">Endpoints</h3>
+        
+        <div class="card">
+          <h3 class="card-title">💰 Get Token Price</h3>
+          <div class="code-block">
+GET /price/:chain/:tokenAddress
+
+Example:
+GET /price/ronin/0x0b7007c13325c48911f73a2dad5fa5dcbf808adc
+
+Response:
+{
+  "price": "1.00",
+  "currency": "USD",
+  "chain": "ronin"
+}
+          </div>
+        </div>
+
+        <div class="card">
+          <h3 class="card-title">🏊 Get Pool Info</h3>
+          <div class="code-block">
+GET /pools/:chain
+
+Example:
+GET /pools/ronin
+
+Response:
+{
+  "pools": [
+    {
+      "pair": "RON/USDC",
+      "address": "0x...",
+      "tvl": "1000000",
+      "volume24h": "50000"
+    }
+  ]
+}
+          </div>
+        </div>
+      </section>
+
+      <!-- Guides Section -->
+      <section id="adding-liquidity" class="section">
+        <h2 class="section-title">Adding Liquidity</h2>
+        
+        <div class="card">
+          <h3 class="card-title">📈 Step-by-Step Guide</h3>
+          <p>1. Connect your wallet to Lindurz</p>
+          <p>2. Navigate to the Liquidity section</p>
+          <p>3. Select the token pair you want to provide liquidity for</p>
+          <p>4. Enter the amount for each token</p>
+          <p>5. Approve the tokens and confirm the transaction</p>
+          <p>6. Receive LP tokens representing your share of the pool</p>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <script>
+    // Smooth scrolling for navigation
+    document.querySelectorAll('.nav-link').forEach(link => {
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        const targetId = link.getAttribute('href').substring(1);
+        const targetElement = document.getElementById(targetId);
+        
+        if (targetElement) {
+          targetElement.scrollIntoView({ behavior: 'smooth' });
+          
+          // Update active link
+          document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+          link.classList.add('active');
+        }
+      });
+    });
+
+    // Update active link on scroll
+    window.addEventListener('scroll', () => {
+      const sections = document.querySelectorAll('.section');
+      const navLinks = document.querySelectorAll('.nav-link');
+      
+      let currentSection = '';
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop - 100;
+        if (window.scrollY >= sectionTop) {
+          currentSection = section.getAttribute('id');
+        }
+      });
+
+      navLinks.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href').substring(1) === currentSection) {
+          link.classList.add('active');
+        }
+      });
+    });
+  </script>
+</body>
+</html>
