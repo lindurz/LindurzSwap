@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Terms of Use - Lindurz DEX</title>
+  <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --primary-bera: #F59E0B;
+      --primary-monad: #3B82F6;
+      --primary-ronin: #8247E5;
+      --text: #1a1a1a;
+      --text-muted: #666;
+      --bg: #ffffff;
+      --sidebar-bg: #f8f9fa;
+      --border: #e9ecef;
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{
+      font-family:'Kanit',sans-serif;
+      background:var(--bg);
+      color:var(--text);
+      line-height:1.6;
+    }
+    .container{
+      display:flex;
+      min-height:100vh;
+    }
+    /* Header */
+    .header{
+      background:var(--bg);
+      border-bottom:1px solid var(--border);
+      padding:1rem 0;
+      position:sticky;
+      top:0;
+      z-index:100;
+    }
+    .nav-container{
+      max-width:1200px;
+      margin:0 auto;
+      padding:0 2rem;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+    }
+    .logo{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      text-decoration:none;
+    }
+    .logo img{
+      width:40px;
+      height:40px;
+      border-radius:8px;
+    }
+    .logo span{
+      font-weight:700;
+      font-size:1.3rem;
+      background:linear-gradient(135deg, var(--primary-bera), var(--primary-monad), var(--primary-ronin));
+      -webkit-background-clip:text;
+      -webkit-text-fill-color:transparent;
+    }
+    /* Main Content */
+    .main-content{
+      flex:1;
+      padding:3rem 2rem;
+      max-width:900px;
+      margin:0 auto;
+    }
+    .terms-header{
+      text-align:center;
+      margin-bottom:3rem;
+      padding-bottom:2rem;
+      border-bottom:2px solid var(--border);
+    }
+    .terms-title{
+      font-size:2.5rem;
+      font-weight:800;
+      margin-bottom:1rem;
+      background:linear-gradient(135deg, var(--primary-bera), var(--primary-monad), var(--primary-ronin));
+      -webkit-background-clip:text;
+      -webkit-text-fill-color:transparent;
+    }
+    .last-updated{
+      color:var(--text-muted);
+      font-size:1rem;
+    }
+    /* Content Sections */
+    .section{
+      margin-bottom:3rem;
+    }
+    .section-title{
+      font-size:1.8rem;
+      font-weight:700;
+      margin-bottom:1.5rem;
+      color:var(--primary-ronin);
+    }
+    .section-subtitle{
+      font-size:1.3rem;
+      font-weight:600;
+      margin:2rem 0 1rem;
+      color:var(--text);
+    }
+    .content{
+      margin-bottom:1.5rem;
+    }
+    .content p{
+      margin-bottom:1rem;
+    }
+    .content ul, .content ol{
+      margin:1rem 0;
+      padding-left:2rem;
+    }
+    .content li{
+      margin-bottom:0.5rem;
+    }
+    .warning-box{
+      background:#fff3cd;
+      border:1px solid #ffeaa7;
+      border-radius:8px;
+      padding:1.5rem;
+      margin:1.5rem 0;
+    }
+    .important-box{
+      background:#e7f3ff;
+      border:1px solid #b3d9ff;
+      border-radius:8px;
+      padding:1.5rem;
+      margin:1.5rem 0;
+    }
+    .risk-box{
+      background:#f8d7da;
+      border:1px solid #f5c6cb;
+      border-radius:8px;
+      padding:1.5rem;
+      margin:1.5rem 0;
+    }
+    .contact-info{
+      background:#f8f9fa;
+      border:1px solid var(--border);
+      border-radius:8px;
+      padding:2rem;
+      margin:2rem 0;
+    }
+    /* Footer */
+    .footer{
+      background:var(--sidebar-bg);
+      border-top:1px solid var(--border);
+      padding:3rem 2rem 2rem;
+      margin-top:4rem;
+    }
+    .footer-content{
+      max-width:1200px;
+      margin:0 auto;
+      display:grid;
+      grid-template-columns:2fr 1fr 1fr;
+      gap:3rem;
+    }
+    .footer-logo{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      margin-bottom:1rem;
+    }
+    .footer-logo img{
+      width:32px;
+      height:32px;
+      border-radius:6px;
+    }
+    .footer-logo span{
+      font-weight:700;
+      font-size:1.1rem;
+      background:linear-gradient(135deg, var(--primary-bera), var(--primary-monad), var(--primary-ronin));
+      -webkit-background-clip:text;
+      -webkit-text-fill-color:transparent;
+    }
+    .footer-links h4{
+      font-weight:600;
+      margin-bottom:1rem;
+      font-size:1.1rem;
+    }
+    .footer-links a{
+      display:block;
+      color:var(--text-muted);
+      text-decoration:none;
+      margin-bottom:0.5rem;
+      transition:color 0.2s;
+    }
+    .footer-links a:hover{
+      color:var(--text);
+    }
+    .footer-bottom{
+      max-width:1200px;
+      margin:2rem auto 0;
+      padding-top:2rem;
+      border-top:1px solid var(--border);
+      text-align:center;
+      color:var(--text-muted);
+    }
+    /* Responsive */
+    @media (max-width: 768px){
+      .footer-content{
+        grid-template-columns:1fr;
+        gap:2rem;
+        text-align:center;
+      }
+      .terms-title{
+        font-size:2rem;
+      }
+      .main-content{
+        padding:2rem 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header class="header">
+    <div class="nav-container">
+      <a href="/" class="logo">
+        <img src="https://lindurz.xyz/assets/ldrz.png" alt="Lindurz">
+        <span>Lindurz</span>
+      </a>
+      <div style="color:var(--text-muted);">Terms of Use</div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="main-content">
+    <header class="terms-header">
+      <h1 class="terms-title">Terms of Use</h1>
+      <p class="last-updated">Last Updated: December 2024</p>
+    </header>
+
+    <!-- Acceptance of Terms -->
+    <section class="section">
+      <h2 class="section-title">1. Acceptance of Terms</h2>
+      <div class="content">
+        <p>By accessing or using Lindurz ("the Platform"), you agree to be bound by these Terms of Use and our Privacy Policy. If you disagree with any part of these terms, you may not access our services.</p>
+        
+        <div class="warning-box">
+          <strong>⚠️ Important:</strong> Lindurz is a non-custodial decentralized protocol. You are solely responsible for your wallet security and transactions.
+        </div>
+      </div>
+    </section>
+
+    <!-- Eligibility -->
+    <section class="section">
+      <h2 class="section-title">2. Eligibility</h2>
+      <div class="content">
+        <p>To use Lindurz, you must:</p>
+        <ul>
+          <li>Be at least 18 years old</li>
+          <li>Have the legal capacity to enter into binding contracts</li>
+          <li>Not be located in any restricted jurisdiction</li>
+          <li>Not be on any trade or economic sanctions lists</li>
+        </ul>
+
+        <div class="important-box">
+          <strong>🌍 Jurisdictional Restrictions:</strong> Some jurisdictions may restrict or prohibit the use of decentralized finance services. You are responsible for complying with local laws.
+        </div>
+      </div>
+    </section>
+
+    <!-- Services Description -->
+    <section class="section">
+      <h2 class="section-title">3. Services Description</h2>
+      
+      <h3 class="section-subtitle">3.1 What We Provide</h3>
+      <div class="content">
+        <p>Lindurz offers decentralized exchange services including:</p>
+        <ul>
+          <li>Token swapping across multiple blockchain networks</li>
+          <li>Liquidity provision and pool creation</li>
+          <li>Access to decentralized financial protocols</li>
+          <li>Cross-chain trading capabilities</li>
+        </ul>
+      </div>
+
+      <h3 class="section-subtitle">3.2 What We Don't Provide</h3>
+      <div class="content">
+        <p>Lindurz does NOT provide:</p>
+        <ul>
+          <li>Custodial wallet services</li>
+          <li>Financial advice or recommendations</li>
+          <li>Investment guarantees or insurance</li>
+          <li>Fiat currency services</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- User Responsibilities -->
+    <section class="section">
+      <h2 class="section-title">4. User Responsibilities</h2>
+      <div class="content">
+        <p>As a user of Lindurz, you are responsible for:</p>
+        <ul>
+          <li><strong>Wallet Security:</strong> Securing your private keys, seed phrases, and wallet credentials</li>
+          <li><strong>Transaction Verification:</strong> Verifying all transaction details before confirmation</li>
+          <li><strong>Compliance:</strong> Ensuring your use complies with applicable laws and regulations</li>
+          <li><strong>Tax Obligations:</strong> Reporting and paying any applicable taxes on your activities</li>
+          <li><strong>Risk Awareness:</strong> Understanding the risks of decentralized finance</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Risks and Disclaimers -->
+    <section class="section">
+      <h2 class="section-title">5. Risks and Disclaimers</h2>
+      
+      <div class="risk-box">
+        <strong>🚨 HIGH RISK WARNING:</strong> Decentralized finance involves substantial risk of financial loss. Only use funds you can afford to lose.
+      </div>
+
+      <h3 class="section-subtitle">5.1 Specific Risks</h3>
+      <div class="content">
+        <ul>
+          <li><strong>Smart Contract Risk:</strong> Potential vulnerabilities in smart contract code</li>
+          <li><strong>Impermanent Loss:</strong> Loss from providing liquidity in pools</li>
+          <li><strong>Market Risk:</strong> Price volatility of digital assets</li>
+          <li><strong>Regulatory Risk:</strong> Changing legal and regulatory landscape</li>
+          <li><strong>Technical Risk:</strong> Network congestion, bugs, or technical failures</li>
+          <li><strong>Third-Party Risk:</strong> Risks associated with underlying blockchain networks</li>
+        </ul>
+      </div>
+
+      <h3 class="section-subtitle">5.2 No Warranty</h3>
+      <div class="content">
+        <p>Lindurz is provided "as is" and "as available" without warranties of any kind. We do not guarantee:</p>
+        <ul>
+          <li>Uninterrupted or error-free service</li>
+          <li>Accuracy of price information</li>
+          <li>Security against all potential threats</li>
+          <li>Profitability of any transactions</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Intellectual Property -->
+    <section class="section">
+      <h2 class="section-title">6. Intellectual Property</h2>
+      <div class="content">
+        <p>Lindurz and its original content, features, and functionality are owned by Lindurz and are protected by international copyright, trademark, and other intellectual property laws.</p>
+        
+        <p><strong>You may:</strong></p>
+        <ul>
+          <li>Use our open source code in accordance with applicable licenses</li>
+          <li>Access our services for personal, non-commercial use</li>
+          <li>Reference our platform in accordance with branding guidelines</li>
+        </ul>
+
+        <p><strong>You may not:</strong></p>
+        <ul>
+          <li>Copy, modify, or create derivative works without permission</li>
+          <li>Use our trademarks without authorization</li>
+          <li>Reverse engineer or attempt to extract source code</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Prohibited Activities -->
+    <section class="section">
+      <h2 class="section-title">7. Prohibited Activities</h2>
+      <div class="content">
+        <p>You agree not to engage in:</p>
+        <ul>
+          <li>Money laundering, terrorist financing, or illegal activities</li>
+          <li>Market manipulation or abusive trading practices</li>
+          <li>Attempting to hack or compromise the platform</li>
+          <li>Using the service from prohibited jurisdictions</li>
+          <li>Violating any applicable laws or regulations</li>
+          <li>Introducing malware, viruses, or harmful code</li>
+        </ul>
+
+        <div class="warning-box">
+          <strong>🔒 Compliance:</strong> We may restrict or terminate access for users engaging in prohibited activities.
+        </div>
+      </div>
+    </section>
+
+    <!-- Limitation of Liability -->
+    <section class="section">
+      <h2 class="section-title">8. Limitation of Liability</h2>
+      <div class="content">
+        <p>To the maximum extent permitted by law, Lindurz and its affiliates shall not be liable for:</p>
+        <ul>
+          <li>Any direct, indirect, incidental, or consequential damages</li>
+          <li>Loss of profits, data, or digital assets</li>
+          <li>User errors, including sending to wrong addresses</li>
+          <li>Market volatility or investment losses</li>
+          <li>Third-party actions or service interruptions</li>
+          <li>Regulatory actions or legal consequences</li>
+        </ul>
+
+        <div class="important-box">
+          <strong>💡 Important:</strong> As a non-custodial service, we cannot reverse transactions or recover lost funds.
+        </div>
+      </div>
+    </section>
+
+    <!-- Indemnification -->
+    <section class="section">
+      <h2 class="section-title">9. Indemnification</h2>
+      <div class="content">
+        <p>You agree to indemnify and hold harmless Lindurz, its affiliates, and their respective officers from any claims, damages, or losses arising from:</p>
+        <ul>
+          <li>Your use of the platform</li>
+          <li>Your violation of these terms</li>
+          <li>Your violation of any laws or regulations</li>
+          <li>Your infringement of any third-party rights</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Termination -->
+    <section class="section">
+      <h2 class="section-title">10. Termination</h2>
+      <div class="content">
+        <p>We may terminate or suspend your access to Lindurz:</p>
+        <ul>
+          <li>For violation of these terms</li>
+          <li>For legal or regulatory reasons</li>
+          <li>To protect the security or integrity of our services</li>
+          <li>For any other reason at our discretion</li>
+        </ul>
+
+        <p>You may stop using our services at any time by disconnecting your wallet.</p>
+      </div>
+    </section>
+
+    <!-- Governing Law -->
+    <section class="section">
+      <h2 class="section-title">11. Governing Law</h2>
+      <div class="content">
+        <p>These Terms shall be governed by the laws of [Jurisdiction], without regard to its conflict of law provisions.</p>
+        
+        <p>Any disputes shall be resolved through binding arbitration in accordance with the rules of [Arbitration Body].</p>
+      </div>
+    </section>
+
+    <!-- Changes to Terms -->
+    <section class="section">
+      <h2 class="section-title">12. Changes to Terms</h2>
+      <div class="content">
+        <p>We may modify these Terms at any time. We will provide notice of material changes by:</p>
+        <ul>
+          <li>Updating the "Last Updated" date</li>
+          <li>Posting notice on our website</li>
+          <li>Notifying users through our platform (if significant changes)</li>
+        </ul>
+
+        <p>Continued use after changes constitutes acceptance of the modified Terms.</p>
+      </div>
+    </section>
+
+    <!-- Contact Information -->
+    <section class="section">
+      <h2 class="section-title">13. Contact Information</h2>
+      <div class="contact-info">
+        <p>For questions about these Terms of Use, please contact us:</p>
+        <p><strong>Email:</strong> legal@lindurz.xyz</p>
+        <p><strong>Website:</strong> lindurz.xyz</p>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-info">
+        <div class="footer-logo">
+          <img src="https://lindurz.xyz/assets/ldrz.png" alt="Lindurz">
+          <span>Lindurz</span>
+        </div>
+        <p>Multi-chain decentralized exchange for the future of finance.</p>
+      </div>
+
+      <div class="footer-links">
+        <h4>Legal</h4>
+        <a href="/privacy.html">Privacy Policy</a>
+        <a href="/terms.html">Terms of Service</a>
+        <a href="/disclaimer.html">Disclaimer</a>
+      </div>
+
+      <div class="footer-links">
+        <h4>Resources</h4>
+        <a href="/docs.html">Documentation</a>
+        <a href="/api.html">API</a>
+        <a href="/github">GitHub</a>
+        <a href="/blog">Blog</a>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>© 2025 Lindurz. All rights reserved. Built for decentralization.</p>
+    </div>
+  </footer>
+
+  <script>
+    // Update last updated date automatically
+    document.addEventListener('DOMContentLoaded', function() {
+      const lastUpdated = document.querySelector('.last-updated');
+      const currentYear = new Date().getFullYear();
+      lastUpdated.textContent = `Last Updated: December ${currentYear}`;
+    });
+  </script>
+</body>
+</html>
