@@ -3,8 +3,8 @@
 pragma solidity ^0.8.30;
 
 contract LindurzRouter {
-    address public factory = 0x82741ff5937933244eb562A4b396f8079F1de914;
-    address public WETH = 0x1Cd0690fF9a693f5EF2dD976660a8dAFc81A109c;
+    address public factory = 0x148Ab79e0E877d632d5a59563abE78461a1942E0;
+    address public WETH = 0xe514d9deb7966c8be0ca922de8a064264ea6bcd4;
 
     modifier ensure(uint256 deadline) {
         require(deadline >= block.timestamp, 'Lindurz: EXPIRED');
