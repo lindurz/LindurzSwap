@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Privacy Policy - Lindurz DEX</title>
+  <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --primary-bera: #F59E0B;
+      --primary-monad: #3B82F6;
+      --primary-ronin: #8247E5;
+      --text: #1a1a1a;
+      --text-muted: #666;
+      --bg: #ffffff;
+      --sidebar-bg: #f8f9fa;
+      --border: #e9ecef;
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{
+      font-family:'Kanit',sans-serif;
+      background:var(--bg);
+      color:var(--text);
+      line-height:1.6;
+    }
+    .container{
+      display:flex;
+      min-height:100vh;
+    }
+    /* Header */
+    .header{
+      background:var(--bg);
+      border-bottom:1px solid var(--border);
+      padding:1rem 0;
+      position:sticky;
+      top:0;
+      z-index:100;
+    }
+    .nav-container{
+      max-width:1200px;
+      margin:0 auto;
+      padding:0 2rem;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+    }
+    .logo{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      text-decoration:none;
+    }
+    .logo img{
+      width:40px;
+      height:40px;
+      border-radius:8px;
+    }
+    .logo span{
+      font-weight:700;
+      font-size:1.3rem;
+      background:linear-gradient(135deg, var(--primary-bera), var(--primary-monad), var(--primary-ronin));
+      -webkit-background-clip:text;
+      -webkit-text-fill-color:transparent;
+    }
+    /* Main Content */
+    .main-content{
+      flex:1;
+      padding:3rem 2rem;
+      max-width:900px;
+      margin:0 auto;
+    }
+    .policy-header{
+      text-align:center;
+      margin-bottom:3rem;
+      padding-bottom:2rem;
+      border-bottom:2px solid var(--border);
+    }
+    .policy-title{
+      font-size:2.5rem;
+      font-weight:800;
+      margin-bottom:1rem;
+      background:linear-gradient(135deg, var(--primary-bera), var(--primary-monad), var(--primary-ronin));
+      -webkit-background-clip:text;
+      -webkit-text-fill-color:transparent;
+    }
+    .last-updated{
+      color:var(--text-muted);
+      font-size:1rem;
+    }
+    /* Content Sections */
+    .section{
+      margin-bottom:3rem;
+    }
+    .section-title{
+      font-size:1.8rem;
+      font-weight:700;
+      margin-bottom:1.5rem;
+      color:var(--primary-ronin);
+    }
+    .section-subtitle{
+      font-size:1.3rem;
+      font-weight:600;
+      margin:2rem 0 1rem;
+      color:var(--text);
+    }
+    .content{
+      margin-bottom:1.5rem;
+    }
+    .content p{
+      margin-bottom:1rem;
+    }
+    .content ul, .content ol{
+      margin:1rem 0;
+      padding-left:2rem;
+    }
+    .content li{
+      margin-bottom:0.5rem;
+    }
+    .highlight-box{
+      background:#f8f9fa;
+      border:1px solid var(--border);
+      border-radius:8px;
+      padding:1.5rem;
+      margin:1.5rem 0;
+    }
+    .warning-box{
+      background:#fff3cd;
+      border:1px solid #ffeaa7;
+      border-radius:8px;
+      padding:1.5rem;
+      margin:1.5rem 0;
+    }
+    .contact-info{
+      background:#e7f3ff;
+      border:1px solid #b3d9ff;
+      border-radius:8px;
+      padding:2rem;
+      margin:2rem 0;
+    }
+    /* Footer */
+    .footer{
+      background:var(--sidebar-bg);
+      border-top:1px solid var(--border);
+      padding:3rem 2rem 2rem;
+      margin-top:4rem;
+    }
+    .footer-content{
+      max-width:1200px;
+      margin:0 auto;
+      display:grid;
+      grid-template-columns:2fr 1fr 1fr;
+      gap:3rem;
+    }
+    .footer-logo{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      margin-bottom:1rem;
+    }
+    .footer-logo img{
+      width:32px;
+      height:32px;
+      border-radius:6px;
+    }
+    .footer-logo span{
+      font-weight:700;
+      font-size:1.1rem;
+      background:linear-gradient(135deg, var(--primary-bera), var(--primary-monad), var(--primary-ronin));
+      -webkit-background-clip:text;
+      -webkit-text-fill-color:transparent;
+    }
+    .footer-links h4{
+      font-weight:600;
+      margin-bottom:1rem;
+      font-size:1.1rem;
+    }
+    .footer-links a{
+      display:block;
+      color:var(--text-muted);
+      text-decoration:none;
+      margin-bottom:0.5rem;
+      transition:color 0.2s;
+    }
+    .footer-links a:hover{
+      color:var(--text);
+    }
+    .footer-bottom{
+      max-width:1200px;
+      margin:2rem auto 0;
+      padding-top:2rem;
+      border-top:1px solid var(--border);
+      text-align:center;
+      color:var(--text-muted);
+    }
+    /* Responsive */
+    @media (max-width: 768px){
+      .footer-content{
+        grid-template-columns:1fr;
+        gap:2rem;
+        text-align:center;
+      }
+      .policy-title{
+        font-size:2rem;
+      }
+      .main-content{
+        padding:2rem 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header class="header">
+    <div class="nav-container">
+      <a href="/" class="logo">
+        <img src="https://lindurz.xyz/assets/ldrz.png" alt="Lindurz">
+        <span>Lindurz</span>
+      </a>
+      <div style="color:var(--text-muted);">Privacy Policy</div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="main-content">
+    <header class="policy-header">
+      <h1 class="policy-title">Privacy Policy</h1>
+      <p class="last-updated">Last Updated: December 2024</p>
+    </header>
+
+    <!-- Introduction -->
+    <section class="section">
+      <h2 class="section-title">1. Introduction</h2>
+      <div class="content">
+        <p>Welcome to Lindurz ("we," "our," or "us"). We operate the Lindurz decentralized exchange platform that allows users to trade digital assets across multiple blockchain networks including Ronin, Berachain, and Monad.</p>
+        
+        <div class="highlight-box">
+          <strong>🌐 Important:</strong> Lindurz is a non-custodial, decentralized platform. We do not hold, store, or have access to your funds, private keys, or personal data.
+        </div>
+
+        <p>This Privacy Policy explains how we handle information in connection with your use of our decentralized services.</p>
+      </div>
+    </section>
+
+    <!-- Information We Collect -->
+    <section class="section">
+      <h2 class="section-title">2. Information We Collect</h2>
+      
+      <h3 class="section-subtitle">2.1 Non-Personal Information</h3>
+      <div class="content">
+        <p>We may collect non-personal information that does not directly identify you:</p>
+        <ul>
+          <li><strong>Blockchain Data:</strong> Public blockchain transaction data, wallet addresses (public keys), and smart contract interactions</li>
+          <li><strong>Usage Data:</strong> Anonymous analytics about how you interact with our interface</li>
+          <li><strong>Technical Data:</strong> Browser type, device information, and IP address (for security purposes)</li>
+        </ul>
+      </div>
+
+      <h3 class="section-subtitle">2.2 What We Don't Collect</h3>
+      <div class="content">
+        <p>We do NOT collect:</p>
+        <ul>
+          <li>Private keys or seed phrases</li>
+          <li>Personal identification information</li>
+          <li>Financial information</li>
+          <li>Email addresses (unless voluntarily provided)</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- How We Use Information -->
+    <section class="section">
+      <h2 class="section-title">3. How We Use Information</h2>
+      <div class="content">
+        <p>We use collected information for:</p>
+        <ul>
+          <li><strong>Service Operation:</strong> To provide and maintain our decentralized exchange services</li>
+          <li><strong>Security:</strong> To protect against fraud, abuse, and security threats</li>
+          <li><strong>Analytics:</strong> To improve user experience and service performance</li>
+          <li><strong>Compliance:</strong> To comply with legal obligations where required</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Third-Party Services -->
+    <section class="section">
+      <h2 class="section-title">4. Third-Party Services</h2>
+      <div class="content">
+        <p>We may use third-party services that have their own privacy policies:</p>
+        
+        <div class="warning-box">
+          <strong>🔗 Important Notice:</strong> When you interact with blockchain networks, your transactions are public and permanent on the respective blockchain.
+        </div>
+
+        <p><strong>Third parties include:</strong></p>
+        <ul>
+          <li>Blockchain networks (Ronin, Berachain, Monad)</li>
+          <li>Wallet providers (MetaMask, Ronin Wallet, etc.)</li>
+          <li>Analytics services (Google Analytics, Mixpanel)</li>
+          <li>Infrastructure providers (RPC nodes, API services)</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Data Security -->
+    <section class="section">
+      <h2 class="section-title">5. Data Security</h2>
+      <div class="content">
+        <p>We implement appropriate technical and organizational measures to protect information:</p>
+        <ul>
+          <li>Encryption of data in transit</li>
+          <li>Regular security assessments</li>
+          <li>Access controls and authentication</li>
+          <li>Secure infrastructure management</li>
+        </ul>
+
+        <div class="highlight-box">
+          <strong>🛡️ Your Responsibility:</strong> As a non-custodial service, you are responsible for securing your wallet, private keys, and seed phrases. We cannot recover lost credentials.
+        </div>
+      </div>
+    </section>
+
+    <!-- Your Rights -->
+    <section class="section">
+      <h2 class="section-title">6. Your Rights</h2>
+      <div class="content">
+        <p>Depending on your jurisdiction, you may have rights regarding your information:</p>
+        <ul>
+          <li><strong>Access:</strong> Request information about what data we have</li>
+          <li><strong>Correction:</strong> Request correction of inaccurate information</li>
+          <li><strong>Deletion:</strong> Request deletion of your information</li>
+          <li><strong>Objection:</strong> Object to certain data processing</li>
+          <li><strong>Portability:</strong> Request transfer of your data</li>
+        </ul>
+
+        <p>To exercise these rights, contact us at <strong>privacy@lindurz.xyz</strong></p>
+      </div>
+    </section>
+
+    <!-- International Transfers -->
+    <section class="section">
+      <h2 class="section-title">7. International Data Transfers</h2>
+      <div class="content">
+        <p>As a decentralized service operating on global blockchain networks, your data may be processed and stored in various jurisdictions worldwide. By using our services, you consent to this transfer and processing.</p>
+      </div>
+    </section>
+
+    <!-- Children's Privacy -->
+    <section class="section">
+      <h2 class="section-title">8. Children's Privacy</h2>
+      <div class="content">
+        <p>Our services are not intended for users under the age of 18. We do not knowingly collect information from children. If you believe we have inadvertently collected information from a child, please contact us immediately.</p>
+      </div>
+    </section>
+
+    <!-- Changes to Policy -->
+    <section class="section">
+      <h2 class="section-title">9. Changes to This Policy</h2>
+      <div class="content">
+        <p>We may update this Privacy Policy from time to time. We will notify users of material changes by:</p>
+        <ul>
+          <li>Posting the updated policy on our website</li>
+          <li>Updating the "Last Updated" date</li>
+          <li>Providing notice through our platform (if significant changes)</li>
+        </ul>
+        <p>Continued use of our services after changes constitutes acceptance of the updated policy.</p>
+      </div>
+    </section>
+
+    <!-- Contact Information -->
+    <section class="section">
+      <h2 class="section-title">10. Contact Us</h2>
+      <div class="contact-info">
+        <p>If you have questions about this Privacy Policy or our data practices, please contact us:</p>
+        <p><strong>Email:</strong> privacy@lindurz.xyz</p>
+        <p><strong>Website:</strong> lindurz.xyz</p>
+        <p>We typically respond to privacy-related inquiries within 7-10 business days.</p>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-info">
+        <div class="footer-logo">
+          <img src="https://lindurz.xyz/assets/ldrz.png" alt="Lindurz">
+          <span>Lindurz</span>
+        </div>
+        <p>Multi-chain decentralized exchange for the future of finance.</p>
+      </div>
+
+      <div class="footer-links">
+        <h4>Legal</h4>
+        <a href="/privacy">Privacy Policy</a>
+        <a href="/terms.html">Terms of Service</a>
+        <a href="/disclaimer">Disclaimer</a>
+      </div>
+
+      <div class="footer-links">
+        <h4>Resources</h4>
+        <a href="/docs.html">Documentation</a>        
+        <a href="/github">GitHub</a>
+        <a href="/docs">Docs</a>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>© 2025 Lindurz. All rights reserved. Built for decentralization.</p>
+    </div>
+  </footer>
+
+  <script>
+    // Update last updated date automatically
+    document.addEventListener('DOMContentLoaded', function() {
+      const lastUpdated = document.querySelector('.last-updated');
+      const currentYear = new Date().getFullYear();
+      lastUpdated.textContent = `Last Updated: December ${currentYear}`;
+    });
+  </script>
+</body>
+</html>
