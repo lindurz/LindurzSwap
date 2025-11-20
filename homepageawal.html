@@ -1,1 +1,375 @@
-y
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Lindurz — Multi-Chain Decentralized Exchange</title>
+  <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --primary-bera: #F59E0B;    /* Orange - Berachain */
+      --primary-monad: #3B82F6;   /* Blue - Monad */
+      --accent-bera: #FBBF24;
+      --accent-monad: #60A5FA;
+      --text: #ffffff;
+      --muted: rgba(255,255,255,0.12);
+      --card-bg: rgba(15, 23, 42, 0.85);
+      --card-border: rgba(255,255,255,0.08);
+      --glass: rgba(255,255,255,0.03);
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{
+      font-family:'Kanit',sans-serif;
+      background: linear-gradient(135deg, #0F172A 0%, #1E293B 50%, #1C1917 100%);
+      color:var(--text);
+      -webkit-font-smoothing:antialiased;
+      min-height:100vh;
+      overflow-x: hidden;
+    }
+    .header{background: rgba(15, 23, 42, 0.95); backdrop-filter: blur(10px); padding:16px 0;position:sticky;top:0;z-index:1300;border-bottom:1px solid rgba(255,255,255,0.05);}
+    .nav-container{max-width:1200px;margin:0 auto;padding:0 20px;display:flex;align-items:center;justify-content:space-between;gap:12px;}
+    .logo{display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--text)}
+    .logo img{width:48px;height:48px;border-radius:12px;object-fit:cover}
+    .logo span{font-weight:800;font-size:24px;background: linear-gradient(135deg, var(--primary-bera), var(--primary-monad)); -webkit-background-clip: text; -webkit-text-fill-color: transparent;}
+    .nav-links{display:flex;align-items:center;gap:32px;}
+    .nav-link{color:var(--text);text-decoration:none;font-weight:600;font-size:16px;transition:all 0.3s ease;position:relative;}
+    .nav-link:hover{color:var(--accent-monad);}
+    .nav-link.active{color:var(--primary-bera);}
+    .nav-link.active::after{content:'';position:absolute;bottom:-8px;left:0;right:0;height:2px;background:var(--primary-bera);border-radius:1px;}
+    .connect-wallet{background: linear-gradient(135deg, var(--primary-bera), var(--primary-monad));color:white;border:none;padding:12px 24px;border-radius:12px;font-weight:700;cursor:pointer;font-size:16px;transition:all 0.3s ease;}
+    .connect-wallet:hover{transform: translateY(-2px);box-shadow: 0 8px 25px rgba(245, 158, 11, 0.3);}
+
+    /* Hero Section */
+    .hero{min-height: 100vh;display:flex;align-items:center;justify-content:center;position:relative;padding:80px 20px;}
+    .hero-bg{position:absolute;top:0;left:0;right:0;bottom:0;overflow:hidden;z-index:-1;}
+    .orb{position:absolute;border-radius:50%;filter: blur(80px);opacity:0.3;}
+    .orb-1{width:600px;height:600px;background:var(--primary-bera);top:-300px;left:-200px;animation: float 8s ease-in-out infinite;}
+    .orb-2{width:500px;height:500px;background:var(--primary-monad);bottom:-250px;right:-150px;animation: float 10s ease-in-out infinite reverse;}
+    @keyframes float{0%,100%{transform:translateY(0px) rotate(0deg);}50%{transform:translateY(-20px) rotate(180deg);}}
+    
+    .hero-content{max-width:1200px;width:100%;text-align:center;}
+    .hero-title{font-size:clamp(3rem, 8vw, 6rem);font-weight:800;margin-bottom:24px;line-height:1.1;}
+    .gradient-text{background: linear-gradient(135deg, var(--primary-bera), var(--primary-monad)); -webkit-background-clip: text; -webkit-text-fill-color: transparent;}
+    .hero-subtitle{font-size:clamp(1.2rem, 3vw, 1.8rem);color:var(--muted);margin-bottom:48px;max-width:600px;margin-left:auto;margin-right:auto;line-height:1.6;}
+    
+    /* Chain Selection */
+    .chain-selection{display:grid;grid-template-columns:1fr 1fr;gap:32px;max-width:1000px;margin:0 auto;}
+    .chain-card{background:var(--card-bg);border:2px solid transparent;border-radius:24px;padding:48px 32px;text-align:center;cursor:pointer;transition:all 0.4s ease;position:relative;overflow:hidden;}
+    .chain-card::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg, var(--primary-bera), var(--primary-monad));}
+    .chain-card.bera{background: linear-gradient(135deg, rgba(245, 158, 11, 0.05), rgba(15, 23, 42, 0.9));}
+    .chain-card.monad{background: linear-gradient(135deg, rgba(59, 130, 246, 0.05), rgba(15, 23, 42, 0.9));}
+    .chain-card:hover{transform:translateY(-8px);border-color:rgba(255,255,255,0.1);}
+    .chain-card.bera:hover{border-color:var(--primary-bera);box-shadow:0 20px 40px rgba(245, 158, 11, 0.2);}
+    .chain-card.monad:hover{border-color:var(--primary-monad);box-shadow:0 20px 40px rgba(59, 130, 246, 0.2);}
+    
+    .chain-icon{width:80px;height:80px;border-radius:20px;margin:0 auto 24px;display:flex;align-items:center;justify-content:center;font-size:32px;font-weight:800;}
+    .chain-icon.bera{background:linear-gradient(135deg, var(--primary-bera), var(--accent-bera));}
+    .chain-icon.monad{background:linear-gradient(135deg, var(--primary-monad), var(--accent-monad));}
+    .chain-name{font-size:2rem;font-weight:800;margin-bottom:16px;}
+    .chain-description{color:var(--muted);margin-bottom:32px;line-height:1.6;}
+    .chain-stats{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:32px;}
+    .stat{text-align:center;}
+    .stat-value{font-size:1.5rem;font-weight:700;margin-bottom:4px;}
+    .stat-label{color:var(--muted);font-size:0.9rem;}
+    .chain-button{padding:16px 32px;border-radius:12px;font-weight:700;font-size:1.1rem;border:none;cursor:pointer;transition:all 0.3s ease;width:100%;}
+    .chain-button.bera{background:var(--primary-bera);color:#1C1917;}
+    .chain-button.monad{background:var(--primary-monad);color:white;}
+    .chain-button:hover{transform:translateY(-2px);box-shadow:0 8px 25px rgba(0,0,0,0.3);}
+
+    /* Features Section */
+    .features{padding:120px 20px;background:rgba(15, 23, 42, 0.5);}
+    .section-title{text-align:center;font-size:3rem;font-weight:800;margin-bottom:80px;}
+    .features-grid{display:grid;grid-template-columns:repeat(auto-fit, minmax(300px, 1fr));gap:32px;max-width:1200px;margin:0 auto;}
+    .feature-card{background:var(--card-bg);border:1px solid var(--card-border);border-radius:20px;padding:40px 32px;text-align:center;transition:all 0.3s ease;}
+    .feature-card:hover{transform:translateY(-5px);border-color:rgba(255,255,255,0.1);}
+    .feature-icon{width:80px;height:80px;border-radius:20px;margin:0 auto 24px;display:flex;align-items:center;justify-content:center;font-size:32px;background:linear-gradient(135deg, var(--primary-bera), var(--primary-monad));}
+    .feature-title{font-size:1.5rem;font-weight:700;margin-bottom:16px;}
+    .feature-description{color:var(--muted);line-height:1.6;}
+
+    /* Footer */
+    footer{background:rgba(15, 23, 42, 0.95);padding:60px 20px 40px;border-top:1px solid rgba(255,255,255,0.05);}
+    .footer-content{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:48px;}
+    .footer-logo{display:flex;align-items:center;gap:12px;margin-bottom:20px;}
+    .footer-logo img{width:40px;height:40px;border-radius:10px;}
+    .footer-logo span{font-weight:800;font-size:20px;background: linear-gradient(135deg, var(--primary-bera), var(--primary-monad)); -webkit-background-clip: text; -webkit-text-fill-color: transparent;}
+    .footer-description{color:var(--muted);line-height:1.6;margin-bottom:24px;}
+    .footer-links h4{font-weight:700;margin-bottom:20px;font-size:1.1rem;}
+    .footer-links a{display:block;color:var(--muted);text-decoration:none;margin-bottom:12px;transition:color 0.3s ease;}
+    .footer-links a:hover{color:var(--text);}
+    .footer-bottom{max-width:1200px;margin:40px auto 0;padding-top:40px;border-top:1px solid rgba(255,255,255,0.05);text-align:center;color:var(--muted);}
+
+    /* Responsive */
+    @media (max-width: 768px){
+      .nav-links{display:none;}
+      .chain-selection{grid-template-columns:1fr;gap:24px;}
+      .hero{padding:120px 20px 60px;}
+      .features-grid{grid-template-columns:1fr;}
+      .footer-content{grid-template-columns:1fr;gap:32px;text-align:center;}
+      .chain-stats{grid-template-columns:1fr 1fr;}
+    }
+
+    /* Particle Background */
+    .particles{position:fixed;top:0;left:0;width:100%;height:100%;z-index:-2;}
+    .particle{position:absolute;background:rgba(255,255,255,0.1);border-radius:50%;}
+  </style>
+</head>
+<body>
+  <!-- Particle Background -->
+  <div class="particles" id="particles"></div>
+
+  <header class="header">
+    <div class="nav-container">
+      <a class="logo" href="/">
+        <img src="https://lindurz.xyz/assets/ldrz.png" alt="Lindurz">
+        <span>Lindurz</span>
+      </a>
+      
+      <nav class="nav-links">
+        <a href="/" class="nav-link active">Home</a>
+        <a href="/swapbera" class="nav-link">Trade on Bera</a>
+        <a href="/swapmonad" class="nav-link">Trade on Monad</a>
+        <a href="/liquiditybera" class="nav-link">Liquidity bera</a>
+        <a href="/liquidityminad" class="nav-link">Liquidity Monad</a>
+      </nav>
+
+      <button class="connect-wallet" id="connectBtn">Connect Wallet</button>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="hero-bg">
+        <div class="orb orb-1"></div>
+        <div class="orb orb-2"></div>
+      </div>
+      
+      <div class="hero-content">
+        <h1 class="hero-title">
+          Trade Across <span class="gradient-text">Multiple Chains</span>
+        </h1>
+        <p class="hero-subtitle">
+          Experience seamless decentralized trading on Berachain and Monad. 
+          Swap tokens, provide liquidity, and earn rewards across the fastest growing ecosystems.
+        </p>
+
+        <!-- Chain Selection -->
+        <div class="chain-selection">
+          <!-- Berachain Card -->
+          <div class="chain-card bera" onclick="window.location.href='/swapbera'">
+            <div class="chain-icon bera">🐻</div>
+            <h2 class="chain-name">Berachain</h2>
+            <p class="chain-description">
+              Trade on the bear-themed L1 with revolutionary DeFi primitives and 
+              sustainable tokenomics.
+            </p>
+            <div class="chain-stats">
+              <div class="stat">
+                <div class="stat-value" id="beraTVL">$---</div>
+                <div class="stat-label">Total Value</div>
+              </div>
+              <div class="stat">
+                <div class="stat-value" id="beraPairs">--</div>
+                <div class="stat-label">Trading Pairs</div>
+              </div>
+            </div>
+            <button class="chain-button bera">Trade on Berachain</button>
+          </div>
+
+          <!-- Monad Card -->
+          <div class="chain-card monad" onclick="window.location.href='/swapmonad'">
+            <div class="chain-icon monad">⚡</div>
+            <h2 class="chain-name">Monad</h2>
+            <p class="chain-description">
+              Experience ultra-fast trading on the parallelized EVM with 
+              unprecedented throughput and low fees.
+            </p>
+            <div class="chain-stats">
+              <div class="stat">
+                <div class="stat-value" id="monadTVL">$---</div>
+                <div class="stat-label">Total Value</div>
+              </div>
+              <div class="stat">
+                <div class="stat-value" id="monadPairs">--</div>
+                <div class="stat-label">Trading Pairs</div>
+              </div>
+            </div>
+            <button class="chain-button monad">Trade on Monad</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features">
+      <h2 class="section-title gradient-text">Why Choose Lindurz?</h2>
+      
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon">🔀</div>
+          <h3 class="feature-title">Multi-Chain Swaps</h3>
+          <p class="feature-description">
+            Seamlessly trade across Berachain and Monad with the best rates and 
+            minimal slippage.
+          </p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">🏊</div>
+          <h3 class="feature-title">Liquidity Pools</h3>
+          <p class="feature-description">
+            Earn fees by providing liquidity to pools on both chains with 
+            competitive APRs.
+          </p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">⚡</div>
+          <h3 class="feature-title">Lightning Fast</h3>
+          <p class="feature-description">
+            Experience sub-second transaction finality on both Berachain and 
+            Monad networks.
+          </p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">🛡️</div>
+          <h3 class="feature-title">Secure & Audited</h3>
+          <p class="feature-description">
+            Fully audited smart contracts with multiple security layers to 
+            protect your funds.
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-content">
+      <div class="footer-info">
+        <div class="footer-logo">
+          <img src="https://lindurz.xyz/assets/ldrz.png" alt="Lindurz">
+          <span>Lindurz</span>
+        </div>
+        <p class="footer-description">
+          The premier multi-chain decentralized exchange for Berachain and Monad. 
+          Trade, earn, and build with confidence.
+        </p>
+      </div>
+
+      <div class="footer-links">
+        <h4>Trade</h4>
+        <a href="/swapbera">Berachain Swap</a>
+        <a href="/swapmonad">Monad Swap</a>
+        <a href="/liquidity">Liquidity Pools</a>
+        <a href="/staking">Yield Farming</a>
+      </div>
+
+      <div class="footer-links">
+        <h4>Developers</h4>
+        <a href="/docs">Documentation</a>
+        <a href="/api">API</a>
+        <a href="/github">GitHub</a>
+        <a href="/audits">Security Audits</a>
+      </div>
+
+      <div class="footer-links">
+        <h4>Community</h4>
+        <a href="/twitter">Twitter</a>
+        <a href="/discord">Discord</a>
+        <a href="/telegram">Telegram</a>
+        <a href="/blog">Blog</a>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>© 2025 Lindurz. Built with ❤️ for the multi-chain future.</p>
+    </div>
+  </footer>
+
+  <script>
+    // Particle Background
+    function createParticles() {
+      const container = document.getElementById('particles');
+      const particleCount = 50;
+      
+      for (let i = 0; i < particleCount; i++) {
+        const particle = document.createElement('div');
+        particle.className = 'particle';
+        
+        const size = Math.random() * 4 + 1;
+        const posX = Math.random() * 100;
+        const posY = Math.random() * 100;
+        const delay = Math.random() * 20;
+        const duration = Math.random() * 10 + 10;
+        
+        particle.style.width = `${size}px`;
+        particle.style.height = `${size}px`;
+        particle.style.left = `${posX}%`;
+        particle.style.top = `${posY}%`;
+        particle.style.animation = `float ${duration}s ease-in-out ${delay}s infinite`;
+        
+        container.appendChild(particle);
+      }
+    }
+
+    // Mock data for TVL and pairs
+    function updateStats() {
+      // Mock data - in real implementation, fetch from APIs
+      document.getElementById('beraTVL').textContent = '$42.5M';
+      document.getElementById('beraPairs').textContent = '156';
+      document.getElementById('monadTVL').textContent = '$28.3M';
+      document.getElementById('monadPairs').textContent = '89';
+    }
+
+    // Wallet connection
+    document.getElementById('connectBtn').addEventListener('click', async () => {
+      if (typeof window.ethereum !== 'undefined') {
+        try {
+          const accounts = await window.ethereum.request({ 
+            method: 'eth_requestAccounts' 
+          });
+          document.getElementById('connectBtn').textContent = 
+            `${accounts[0].slice(0,6)}...${accounts[0].slice(-4)}`;
+        } catch (error) {
+          console.error('User rejected connection');
+        }
+      } else {
+        alert('Please install MetaMask or another Web3 wallet');
+      }
+    });
+
+    // Initialize
+    document.addEventListener('DOMContentLoaded', () => {
+      createParticles();
+      updateStats();
+      
+      // Add hover effects to chain cards
+      const chainCards = document.querySelectorAll('.chain-card');
+      chainCards.forEach(card => {
+        card.addEventListener('mouseenter', () => {
+          card.style.transform = 'translateY(-8px) scale(1.02)';
+        });
+        
+        card.addEventListener('mouseleave', () => {
+          card.style.transform = 'translateY(0) scale(1)';
+        });
+      });
+    });
+
+    // Chain detection and auto-redirect
+    if (typeof window.ethereum !== 'undefined') {
+      window.ethereum.on('chainChanged', (chainId) => {
+        // Berachain chainId - replace with actual
+        if (chainId === '0xBERA') {
+          window.location.href = '/swapbera';
+        } 
+        // Monad chainId - replace with actual  
+        else if (chainId === '0xMONAD') {
+          window.location.href = '/swapmonad';
+        }
+      });
+    }
+  </script>
+</body>
+</html>
