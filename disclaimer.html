@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Disclaimer - Lindurz DEX</title>
+  <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --primary-bera: #F59E0B;
+      --primary-monad: #3B82F6;
+      --primary-ronin: #8247E5;
+      --text: #1a1a1a;
+      --text-muted: #666;
+      --bg: #ffffff;
+      --sidebar-bg: #f8f9fa;
+      --border: #e9ecef;
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{
+      font-family:'Kanit',sans-serif;
+      background:var(--bg);
+      color:var(--text);
+      line-height:1.6;
+    }
+    .container{
+      display:flex;
+      min-height:100vh;
+    }
+    /* Header */
+    .header{
+      background:var(--bg);
+      border-bottom:1px solid var(--border);
+      padding:1rem 0;
+      position:sticky;
+      top:0;
+      z-index:100;
+    }
+    .nav-container{
+      max-width:1200px;
+      margin:0 auto;
+      padding:0 2rem;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+    }
+    .logo{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      text-decoration:none;
+    }
+    .logo img{
+      width:40px;
+      height:40px;
+      border-radius:8px;
+    }
+    .logo span{
+      font-weight:700;
+      font-size:1.3rem;
+      background:linear-gradient(135deg, var(--primary-bera), var(--primary-monad), var(--primary-ronin));
+      -webkit-background-clip:text;
+      -webkit-text-fill-color:transparent;
+    }
+    /* Main Content */
+    .main-content{
+      flex:1;
+      padding:3rem 2rem;
+      max-width:900px;
+      margin:0 auto;
+    }
+    .disclaimer-header{
+      text-align:center;
+      margin-bottom:3rem;
+      padding-bottom:2rem;
+      border-bottom:2px solid var(--border);
+    }
+    .disclaimer-title{
+      font-size:2.5rem;
+      font-weight:800;
+      margin-bottom:1rem;
+      background:linear-gradient(135deg, var(--primary-bera), var(--primary-monad), var(--primary-ronin));
+      -webkit-background-clip:text;
+      -webkit-text-fill-color:transparent;
+    }
+    .last-updated{
+      color:var(--text-muted);
+      font-size:1rem;
+    }
+    /* Content Sections */
+    .section{
+      margin-bottom:3rem;
+    }
+    .section-title{
+      font-size:1.8rem;
+      font-weight:700;
+      margin-bottom:1.5rem;
+      color:var(--primary-ronin);
+    }
+    .section-subtitle{
+      font-size:1.3rem;
+      font-weight:600;
+      margin:2rem 0 1rem;
+      color:var(--text);
+    }
+    .content{
+      margin-bottom:1.5rem;
+    }
+    .content p{
+      margin-bottom:1rem;
+    }
+    .content ul, .content ol{
+      margin:1rem 0;
+      padding-left:2rem;
+    }
+    .content li{
+      margin-bottom:0.5rem;
+    }
+    .warning-box{
+      background:#fff3cd;
+      border:1px solid #ffeaa7;
+      border-radius:8px;
+      padding:1.5rem;
+      margin:1.5rem 0;
+    }
+    .important-box{
+      background:#e7f3ff;
+      border:1px solid #b3d9ff;
+      border-radius:8px;
+      padding:1.5rem;
+      margin:1.5rem 0;
+    }
+    .risk-box{
+      background:#f8d7da;
+      border:1px solid #f5c6cb;
+      border-radius:8px;
+      padding:1.5rem;
+      margin:1.5rem 0;
+    }
+    .contact-info{
+      background:#f8f9fa;
+      border:1px solid var(--border);
+      border-radius:8px;
+      padding:2rem;
+      margin:2rem 0;
+    }
+    /* Footer */
+    .footer{
+      background:var(--sidebar-bg);
+      border-top:1px solid var(--border);
+      padding:3rem 2rem 2rem;
+      margin-top:4rem;
+    }
+    .footer-content{
+      max-width:1200px;
+      margin:0 auto;
+      display:grid;
+      grid-template-columns:2fr 1fr 1fr;
+      gap:3rem;
+    }
+    .footer-logo{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      margin-bottom:1rem;
+    }
+    .footer-logo img{
+      width:32px;
+      height:32px;
+      border-radius:6px;
+    }
+    .footer-logo span{
+      font-weight:700;
+      font-size:1.1rem;
+      background:linear-gradient(135deg, var(--primary-bera), var(--primary-monad), var(--primary-ronin));
+      -webkit-background-clip:text;
+      -webkit-text-fill-color:transparent;
+    }
+    .footer-links h4{
+      font-weight:600;
+      margin-bottom:1rem;
+      font-size:1.1rem;
+    }
+    .footer-links a{
+      display:block;
+      color:var(--text-muted);
+      text-decoration:none;
+      margin-bottom:0.5rem;
+      transition:color 0.2s;
+    }
+    .footer-links a:hover{
+      color:var(--text);
+    }
+    .footer-bottom{
+      max-width:1200px;
+      margin:2rem auto 0;
+      padding-top:2rem;
+      border-top:1px solid var(--border);
+      text-align:center;
+      color:var(--text-muted);
+    }
+    /* Responsive */
+    @media (max-width: 768px){
+      .footer-content{
+        grid-template-columns:1fr;
+        gap:2rem;
+        text-align:center;
+      }
+      .disclaimer-title{
+        font-size:2rem;
+      }
+      .main-content{
+        padding:2rem 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header class="header">
+    <div class="nav-container">
+      <a href="/" class="logo">
+        <img src="https://lindurz.xyz/assets/ldrz.png" alt="Lindurz">
+        <span>Lindurz</span>
+      </a>
+      <div style="color:var(--text-muted);">Disclaimer</div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="main-content">
+    <header class="disclaimer-header">
+      <h1 class="disclaimer-title">Disclaimer</h1>
+      <p class="last-updated">Last Updated: December 2024</p>
+    </header>
+
+    <!-- Critical Warning -->
+    <section class="section">
+      <div class="risk-box">
+        <h2 style="color:#721c24; margin-bottom:1rem;">🚨 EXTREMELY HIGH RISK WARNING</h2>
+        <p><strong>Cryptocurrency and decentralized finance (DeFi) involve extremely high levels of risk and may not be suitable for all investors.</strong></p>
+        <p>You could lose all of your invested capital. Only invest money you are prepared to lose completely.</p>
+      </div>
+    </section>
+
+    <!-- No Financial Advice -->
+    <section class="section">
+      <h2 class="section-title">1. No Financial Advice</h2>
+      <div class="content">
+        <p>Lindurz is a technology platform, NOT a financial advisor. All information provided on our platform is for informational purposes only and should not be construed as:</p>
+        <ul>
+          <li>Financial advice or investment recommendations</li>
+          <li>Investment analysis or research reports</li>
+          <li>Suggestions to buy, sell, or hold any digital assets</li>
+          <li>Tax, legal, or accounting advice</li>
+        </ul>
+
+        <div class="warning-box">
+          <strong>💡 Important:</strong> You should consult with qualified financial advisors, legal professionals, and tax specialists before making any financial decisions.
+        </div>
+      </div>
+    </section>
+
+    <!-- Investment Risks -->
+    <section class="section">
+      <h2 class="section-title">2. Investment Risks</h2>
+      
+      <h3 class="section-subtitle">2.1 General Cryptocurrency Risks</h3>
+      <div class="content">
+        <ul>
+          <li><strong>Price Volatility:</strong> Cryptocurrency prices can fluctuate dramatically in short periods</li>
+          <li><strong>Market Liquidity:</strong> Some tokens may have low liquidity, making it difficult to buy/sell</li>
+          <li><strong>Regulatory Uncertainty:</strong> Changing regulations may impact asset values and legality</li>
+          <li><strong>Technology Adoption:</strong> Success depends on widespread technology adoption</li>
+        </ul>
+      </div>
+
+      <h3 class="section-subtitle">2.2 DeFi-Specific Risks</h3>
+      <div class="content">
+        <ul>
+          <li><strong>Smart Contract Risk:</strong> Potential vulnerabilities in smart contract code</li>
+          <li><strong>Impermanent Loss:</strong> Loss experienced by liquidity providers due to price changes</li>
+          <li><strong>Protocol Risk:</strong> Risks associated with underlying DeFi protocols</li>
+          <li><strong>Oracle Risk:</strong> Dependence on price feed accuracy</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Technical Risks -->
+    <section class="section">
+      <h2 class="section-title">3. Technical Risks</h2>
+      <div class="content">
+        <ul>
+          <li><strong>Smart Contract Bugs:</strong> Despite audits, undetected vulnerabilities may exist</li>
+          <li><strong>Network Congestion:</strong> Blockchain networks may become congested, causing delays</li>
+          <li><strong>Wallet Security:</strong> Loss of private keys means permanent loss of funds</li>
+          <li><strong>Bridge Risks:</strong> Cross-chain bridges may have security vulnerabilities</li>
+          <li><strong>Front-running:</strong> Potential for transaction ordering manipulation</li>
+        </ul>
+
+        <div class="important-box">
+          <strong>🔐 Security Note:</strong> We conduct regular security audits, but no system can be 100% secure. Use at your own risk.
+        </div>
+      </div>
+    </section>
+
+    <!-- No Guarantees -->
+    <section class="section">
+      <h2 class="section-title">4. No Guarantees or Warranties</h2>
+      <div class="content">
+        <p>Lindurz makes no guarantees, representations, or warranties regarding:</p>
+        <ul>
+          <li>Profitability of any transactions or investments</li>
+          <li>Accuracy of price information or market data</li>
+          <li>Continuous, uninterrupted, or error-free service</li>
+          <li>Security against all potential threats or attacks</li>
+          <li>Compliance with specific regulatory requirements</li>
+        </ul>
+
+        <p>The platform is provided "as is" and "as available" without any warranties of any kind.</p>
+      </div>
+    </section>
+
+    <!-- User Responsibility -->
+    <section class="section">
+      <h2 class="section-title">5. User Responsibility</h2>
+      <div class="content">
+        <p>You acknowledge and accept full responsibility for:</p>
+        <ul>
+          <li>Your own investment decisions and research</li>
+          <li>Securing your wallet, private keys, and seed phrases</li>
+          <li>Verifying all transaction details before confirmation</li>
+          <li>Understanding the risks associated with DeFi</li>
+          <li>Complying with applicable laws and regulations</li>
+          <li>Reporting and paying applicable taxes</li>
+        </ul>
+
+        <div class="warning-box">
+          <strong>⚠️ Transaction Irreversibility:</strong> Blockchain transactions are irreversible. We cannot recover funds sent to wrong addresses.
+        </div>
+      </div>
+    </section>
+
+    <!-- Third-Party Protocols -->
+    <section class="section">
+      <h2 class="section-title">6. Third-Party Protocols</h2>
+      <div class="content">
+        <p>Lindurz interacts with various third-party protocols and smart contracts. We are not responsible for:</p>
+        <ul>
+          <li>Actions or failures of third-party protocols</li>
+          <li>Security breaches in external smart contracts</li>
+          <li>Rug pulls or exit scams in third-party projects</li>
+          <li>Changes to external protocol rules or parameters</li>
+        </ul>
+
+        <p>You should independently research all protocols you interact with through our platform.</p>
+      </div>
+    </section>
+
+    <!-- Regulatory Compliance -->
+    <section class="section">
+      <h2 class="section-title">7. Regulatory Compliance</h2>
+      <div class="content">
+        <p>It is your responsibility to:</p>
+        <ul>
+          <li>Determine the legality of cryptocurrency activities in your jurisdiction</li>
+          <li>Comply with all applicable laws and regulations</li>
+          <li>Report transactions for tax purposes as required</li>
+          <li>Ensure you are not violating any financial regulations</li>
+        </ul>
+
+        <div class="important-box">
+          <strong>🌍 Jurisdictional Awareness:</strong> Some countries prohibit or restrict cryptocurrency activities. Know your local laws.
+        </div>
+      </div>
+    </section>
+
+    <!-- Limitation of Liability -->
+    <section class="section">
+      <h2 class="section-title">8. Limitation of Liability</h2>
+      <div class="content">
+        <p>To the maximum extent permitted by law, Lindurz and its affiliates shall not be liable for any:</p>
+        <ul>
+          <li>Financial losses, including loss of principal investment</li>
+          <li>Consequential, incidental, or punitive damages</li>
+          <li>Losses due to market volatility or price changes</li>
+          <li>Losses from smart contract exploits or hacks</li>
+          <li>Losses from user error or security negligence</li>
+          <li>Regulatory penalties or legal consequences</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Acknowledgment -->
+    <section class="section">
+      <h2 class="section-title">9. Your Acknowledgment</h2>
+      <div class="content">
+        <p>By using Lindurz, you acknowledge that:</p>
+        <ul>
+          <li>You understand the high risks involved in DeFi</li>
+          <li>You are solely responsible for your investment decisions</li>
+          <li>You have the technical knowledge to use decentralized protocols</li>
+          <li>You accept the possibility of complete loss of funds</li>
+          <li>You have read and understood this disclaimer</li>
+        </ul>
+
+        <div class="risk-box">
+          <strong>✅ Final Confirmation:</strong> If you do not understand or accept these risks, you should NOT use Lindurz or any DeFi platform.
+        </div>
+      </div>
+    </section>
+
+    <!-- Updates to Disclaimer -->
+    <section class="section">
+      <h2 class="section-title">10. Updates to Disclaimer</h2>
+      <div class="content">
+        <p>We may update this disclaimer as the regulatory landscape evolves or new risks emerge. Continued use of our platform constitutes acceptance of the updated terms.</p>
+        
+        <p>Check this page regularly for the most current risk disclosures.</p>
+      </div>
+    </section>
+
+    <!-- Contact for Clarification -->
+    <section class="section">
+      <h2 class="section-title">11. Seeking Clarification</h2>
+      <div class="contact-info">
+        <p>If you have questions about the risks involved or need clarification:</p>
+        <p><strong>Email:</strong> legal@lindurz.xyz</p>
+        <p><strong>Documentation:</strong> docs.lindurz.xyz</p>
+        <p><strong>Community:</strong> Join our community channels for discussion</p>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-info">
+        <div class="footer-logo">
+          <img src="https://lindurz.xyz/assets/ldrz.png" alt="Lindurz">
+          <span>Lindurz</span>
+        </div>
+        <p>Multi-chain decentralized exchange for the future of finance.</p>
+      </div>
+
+      <div class="footer-links">
+        <h4>Legal</h4>
+        <a href="/privacy.html">Privacy Policy</a>
+        <a href="/terms.html">Terms of Service</a>
+        <a href="/disclaimer.html">Disclaimer</a>
+      </div>
+
+      <div class="footer-links">
+        <h4>Resources</h4>
+        <a href="/docs.html">Documentation</a>
+        <a href="/api.html">API</a>
+        <a href="/github">GitHub</a>
+        <a href="/blog">Blog</a>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>© 2025 Lindurz. All rights reserved. Trade at your own risk.</p>
+    </div>
+  </footer>
+
+  <script>
+    // Update last updated date automatically
+    document.addEventListener('DOMContentLoaded', function() {
+      const lastUpdated = document.querySelector('.last-updated');
+      const currentYear = new Date().getFullYear();
+      lastUpdated.textContent = `Last Updated: December ${currentYear}`;
+    });
+  </script>
+</body>
+</html>
