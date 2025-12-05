@@ -57,7 +57,7 @@
   <!-- ==================== -->
   <!-- FAVICON -->
   <!-- ==================== -->
-  <link rel="icon" type="image/png" href="https://lindurz.xyz/assets/favicon-96x96.png">
+  <link rel="icon" type="image/png" href="https://lindurz.xyz/assets/favicon-192x192.png">
   <link rel="apple-touch-icon" sizes="180x180" href="https://lindurz.xyz/assets/apple-touch-icon.png">
   <link rel="manifest" href="https://lindurz.xyz/manifest.json">
   <link rel="canonical" href="https://lindurz.xyz/">
@@ -95,6 +95,10 @@
       --primary-bera: #F59E0B;    /* Orange - Berachain */
       --primary-monad: #3B82F6;   /* Blue - Monad */
       --primary-ronin: #8247E5;   /* Purple - Ronin */
+      --primary-core: #14B8A6;    /* Teal - Core */
+      --primary-plasma: #EC4899;  /* Pink - Plasma */
+      --primary-merlin: #8B5CF6;  /* Violet - Merlin */
+      --primary-celo: #10B981;    /* Green - Celo */
       --accent-bera: #FBBF24;
       --accent-monad: #60A5FA;
       --accent-ronin: #9D6BFF;
@@ -150,30 +154,76 @@
     .gradient-text{background: linear-gradient(135deg, var(--primary-bera), var(--primary-monad), var(--primary-ronin)); -webkit-background-clip: text; -webkit-text-fill-color: transparent;}
     .hero-subtitle{font-size:clamp(1.2rem, 3vw, 1.8rem);color:var(--muted);margin-bottom:48px;max-width:600px;margin-left:auto;margin-right:auto;line-height:1.6;}
     
-    /* Compact Chain Grid */
-    .chain-grid{display:grid;grid-template-columns:repeat(auto-fit, minmax(280px, 1fr));gap:20px;max-width:900px;margin:0 auto;}
-    .chain-card-compact{background:var(--card-bg);border:1px solid var(--card-border);border-radius:16px;padding:24px;text-align:center;cursor:pointer;transition:all 0.3s ease;position:relative;overflow:hidden;}
+    /* 2-Column Chain Grid (1 2 / 3 4 / 5 6) */
+    .chain-grid{
+      display:grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+      max-width: 500px;
+      margin: 0 auto;
+    }
+    .chain-card-compact{
+      background:var(--card-bg);
+      border:1px solid var(--card-border);
+      border-radius:12px;
+      padding:20px 16px;
+      text-align:center;
+      cursor:pointer;
+      transition:all 0.3s ease;
+      position:relative;
+      overflow:hidden;
+      min-height: 140px;
+      display:flex;
+      flex-direction:column;
+      justify-content:space-between;
+    }
     .chain-card-compact::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;}
     .chain-card-compact.bera::before{background:var(--primary-bera);}
+    .chain-card-compact.core::before{background:var(--primary-core);}
     .chain-card-compact.monad::before{background:var(--primary-monad);}
-    .chain-card-compact.ronin::before{background:var(--primary-ronin);}
-    .chain-card-compact:hover{transform:translateY(-5px);border-color:rgba(255,255,255,0.2);}
-    .chain-card-compact.bera:hover{box-shadow:0 10px 30px rgba(245, 158, 11, 0.15);}
-    .chain-card-compact.monad:hover{box-shadow:0 10px 30px rgba(59, 130, 246, 0.15);}
-    .chain-card-compact.ronin:hover{box-shadow:0 10px 30px rgba(130, 71, 229, 0.15);}
+    .chain-card-compact.plasma::before{background:var(--primary-plasma);}
+    .chain-card-compact.merlin::before{background:var(--primary-merlin);}
+    .chain-card-compact.celo::before{background:var(--primary-celo);}
     
-    .chain-logo{width:60px;height:60px;border-radius:12px;margin:0 auto 16px;display:flex;align-items:center;justify-content:center;font-size:24px;background:var(--card-bg);border:2px solid rgba(255,255,255,0.1);}
-    .chain-logo img{width:32px;height:32px;border-radius:8px;}
-    .chain-name-compact{font-size:1.3rem;font-weight:700;margin-bottom:8px;}
-    .chain-stats-compact{display:flex;justify-content:space-around;margin:16px 0;padding:12px 0;border-top:1px solid rgba(255,255,255,0.05);border-bottom:1px solid rgba(255,255,255,0.05);}
-    .stat-compact{text-align:center;}
-    .stat-value-compact{font-size:1.1rem;font-weight:700;margin-bottom:2px;}
-    .stat-label-compact{color:var(--muted);font-size:0.8rem;}
-    .chain-button-compact{padding:10px 20px;border-radius:10px;font-weight:600;font-size:0.9rem;border:none;cursor:pointer;transition:all 0.3s ease;width:100%;}
+    .chain-logo{
+      width: 48px;
+      height: 48px;
+      margin: 0 auto 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .chain-logo img{
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+    }
+    .chain-name-compact{
+      font-size: 1.2rem;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+    .chain-subtitle{
+      font-size: 0.85rem;
+      color: var(--muted);
+      margin-bottom: 12px;
+    }
+    .chain-button-compact{
+      padding: 10px 16px;
+      border-radius: 10px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      border: none;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      width: 100%;
+    }
     .chain-button-compact.bera{background:var(--primary-bera);color:#1C1917;}
+    .chain-button-compact.core{background:var(--primary-core);color:#1C1917;}
     .chain-button-compact.monad{background:var(--primary-monad);color:white;}
-    .chain-button-compact.ronin{background:var(--primary-ronin);color:white;}
-    .chain-button-compact:hover{transform:translateY(-2px);}
+    .chain-button-compact.plasma{background:var(--primary-plasma);color:white;}
+    .chain-button-compact.merlin{background:var(--primary-merlin);color:white;}
+    .chain-button-compact.celo{background:var(--primary-celo);color:#1C1917;}
 
     /* Quick Stats */
     .quick-stats{display:flex;justify-content:center;gap:40px;margin:40px 0;flex-wrap:wrap;}
@@ -206,7 +256,7 @@
     /* Responsive */
     @media (max-width: 768px){
       .nav-links{display:none;}
-      .chain-grid{grid-template-columns:1fr;gap:16px;}
+      .chain-grid{grid-template-columns: repeat(2, 1fr); max-width: 400px;}
       .hero{padding:120px 20px 60px;}
       .features-grid{grid-template-columns:1fr;}
       .footer-content{grid-template-columns:1fr;gap:32px;text-align:center;}
@@ -241,17 +291,29 @@
             <span style="margin-left:auto;">▼</span>
           </button>
           <div class="chain-dropdown">
-            <a href="/swapbera.html" class="chain-option">
+            <a href="/swapbera" class="chain-option">
               <img src="assets/bera.png" alt="Bera">
               <span>Berachain</span>
             </a>
-            <a href="swapmonad.html" class="chain-option">
+            <a href="/swapcore" class="chain-option">
+              <img src="assets/core.png" alt="Core">
+              <span>Core</span>
+            </a>
+            <a href="/swapmonad" class="chain-option">
               <img src="assets/monad.png" alt="Monad">
               <span>Monad</span>
             </a>
-            <a href="swapronin.html" class="chain-option">
-              <img src="assets/ronin.png" alt="Ronin">
-              <span>Ronin</span>
+            <a href="/swapplasma" class="chain-option">
+              <img src="assets/plasma.png" alt="Plasma">
+              <span>Plasma</span>
+            </a>
+            <a href="/swapmerlin" class="chain-option">
+              <img src="assets/merlin.png" alt="Merlin">
+              <span>Merlin</span>
+            </a>
+            <a href="/swapcelo" class="chain-option">
+              <img src="assets/celo.png" alt="Celo">
+              <span>Celo</span>
             </a>
           </div>
         </div>
@@ -293,68 +355,68 @@
             <div class="quick-stat-label">Trading Pairs</div>
           </div>
           <div class="quick-stat">
-            <div class="quick-stat-value">3</div>
+            <div class="quick-stat-value">6</div>
             <div class="quick-stat-label">Supported Chains</div>
           </div>
         </div>
 
-        <!-- Compact Chain Grid -->
+        <!-- 2-Column Chain Grid (1 2 / 3 4 / 5 6) -->
         <div class="chain-grid">
-          <!-- Berachain Card -->
-          <div class="chain-card-compact bera" onclick="window.location.href=/swapbera">
+          <!-- Row 1 -->
+          <div class="chain-card-compact bera" onclick="window.location.href='/swapbera'">
             <div class="chain-logo">
               <img src="assets/bera.png" alt="Berachain">
             </div>
-            <h3 class="chain-name-compact">Berachain</h3>
-            <div class="chain-stats-compact">
-              <div class="stat-compact">
-                <div class="stat-value-compact">$0.00</div>
-                <div class="stat-label-compact">TVL</div>
-              </div>
-              <div class="stat-compact">
-                <div class="stat-value-compact">000</div>
-                <div class="stat-label-compact">Pairs</div>
-              </div>
-            </div>
-            <button class="chain-button-compact bera">Trade on Bera</button>
+            <h3 class="chain-name-compact">BERA</h3>
+            <div class="chain-subtitle">Berachain</div>
+            <button class="chain-button-compact bera">Trade</button>
           </div>
 
-          <!-- Monad Card -->
-          <div class="chain-card-compact monad" onclick="window.location.href=/swapmonad">
+          <div class="chain-card-compact core" onclick="window.location.href='/swapcore'">
+            <div class="chain-logo">
+              <img src="assets/core.png" alt="Core">
+            </div>
+            <h3 class="chain-name-compact">CORE</h3>
+            <div class="chain-subtitle">Core DAO</div>
+            <button class="chain-button-compact core">Trade</button>
+          </div>
+
+          <!-- Row 2 -->
+          <div class="chain-card-compact monad" onclick="window.location.href='/swapmonad'">
             <div class="chain-logo">
               <img src="assets/monad.png" alt="Monad">
             </div>
-            <h3 class="chain-name-compact">Monad</h3>
-            <div class="chain-stats-compact">
-              <div class="stat-compact">
-                <div class="stat-value-compact">$0.00</div>
-                <div class="stat-label-compact">TVL</div>
-              </div>
-              <div class="stat-compact">
-                <div class="stat-value-compact">00</div>
-                <div class="stat-label-compact">Pairs</div>
-              </div>
-            </div>
-            <button class="chain-button-compact monad">Trade on Monad</button>
+            <h3 class="chain-name-compact">MONAD</h3>
+            <div class="chain-subtitle">Monad</div>
+            <button class="chain-button-compact monad">Trade</button>
           </div>
 
-          <!-- Ronin Card -->
-          <div class="chain-card-compact ronin" onclick="window.location.href=/swapronin">
+          <div class="chain-card-compact plasma" onclick="window.location.href='/swapplasma'">
             <div class="chain-logo">
-              <img src="assets/ronin.png" alt="Ronin">
+              <img src="assets/xpl.png" alt="Plasma">
             </div>
-            <h3 class="chain-name-compact">Ronin</h3>
-            <div class="chain-stats-compact">
-              <div class="stat-compact">
-                <div class="stat-value-compact">$0.00</div>
-                <div class="stat-label-compact">TVL</div>
-              </div>
-              <div class="stat-compact">
-                <div class="stat-value-compact">000</div>
-                <div class="stat-label-compact">Pairs</div>
-              </div>
+            <h3 class="chain-name-compact">PLASMA</h3>
+            <div class="chain-subtitle">Plasma</div>
+            <button class="chain-button-compact plasma">Trade</button>
+          </div>
+
+          <!-- Row 3 -->
+          <div class="chain-card-compact merlin" onclick="window.location.href='/swapmerlin'">
+            <div class="chain-logo">
+              <img src="assets/merl.png" alt="Merlin">
             </div>
-            <button class="chain-button-compact ronin">Trade on Ronin</button>
+            <h3 class="chain-name-compact">MERLIN</h3>
+            <div class="chain-subtitle">Merlin Chain</div>
+            <button class="chain-button-compact merlin">Trade</button>
+          </div>
+
+          <div class="chain-card-compact celo" onclick="window.location.href='/swapcelo'">
+            <div class="chain-logo">
+              <img src="assets/celo.png" alt="Celo">
+            </div>
+            <h3 class="chain-name-compact">CELO</h3>
+            <div class="chain-subtitle">Celo</div>
+            <button class="chain-button-compact celo">Trade</button>
           </div>
         </div>
       </div>
@@ -416,8 +478,11 @@
       <div class="footer-links">
         <h4>Trade</h4>
         <a href="/swapbera">Berachain</a>
+        <a href="/swapcore">Core</a>
         <a href="/swapmonad">Monad</a>
-        <a href="/swapronin">Ronin</a>        
+        <a href="/swapplasma">Plasma</a>
+        <a href="/swapmerlin">Merlin</a>
+        <a href="/swapcelo">Celo</a>
       </div>
 
       <div class="footer-links">
@@ -470,19 +535,6 @@
     // Initialize
     document.addEventListener('DOMContentLoaded', () => {
       createParticles();
-      
-      // Add click handlers untuk compact cards
-      document.querySelectorAll('.chain-card-compact').forEach(card => {
-        card.addEventListener('click', () => {
-          if (card.classList.contains('bera')) {
-            window.location.href = '/swapbera';
-          } else if (card.classList.contains('monad')) {
-            window.location.href = '/swapmonad';
-          } else if (card.classList.contains('ronin')) {
-            window.location.href = '/swapronin';
-          }
-        });
-      });
 
       // Wallet connection
       document.getElementById('connectBtn').addEventListener('click', async () => {
