@@ -383,12 +383,12 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/ethers/5.7.1/ethers.umd.min.js"></script>
   <script>
   // CONFIG PLASMA
-  const ROUTER = '0x...'; // ROUTER PLASMA (GANTI DENGAN ADDRESS ASLI)
-  const WXPL = '0x...'; // WRAPPED XPL (GANTI DENGAN ADDRESS ASLI)
-  const FACTORY = '0x...'; // FACTORY PLASMA (GANTI DENGAN ADDRESS ASLI)
+  const ROUTER = '0xb19E8deB507DC3C0259CAd97D37Da4e66eaCE91d'; // ROUTER PLASMA (GANTI DENGAN ADDRESS ASLI)
+  const WXPL = '0x6100e367285b01f48d07953803a2d8dca5d19873'; // WRAPPED XPL (GANTI DENGAN ADDRESS ASLI)
+  const FACTORY = '0x148Ab79e0E877d632d5a59563abE78461a1942E0'; // FACTORY PLASMA (GANTI DENGAN ADDRESS ASLI)
   const LDRZ = '0x...'; // LINDURZ TOKEN PLASMA (GANTI DENGAN ADDRESS ASLI)
-  const USDC = '0x...'; // USDC PLASMA (GANTI DENGAN ADDRESS ASLI)
-  const USDT0 = '0x...'; // USDT0 PLASMA (GANTI DENGAN ADDRESS ASLI)
+  const USDT0 = '0xB8CE59FC3717ada4C02eaDF9682A9e934F625ebb'; // USDC PLASMA (GANTI DENGAN ADDRESS ASLI)
+  const WETH = '0x9895D81bB462A195b4922ED7De0e3ACD007c32CB'; // WETH PLASMA (GANTI DENGAN ADDRESS ASLI)
   const RPC = 'https://rpc.plasma.to'; // RPC PLASMA
   const CHAIN_ID_HEX = '0x2611'; // CHAIN ID PLASMA (9745 dalam hex)
 
@@ -455,8 +455,8 @@
     { symbol: 'XPL', address: 'XPL_NATIVE', logo: 'https://lindurz.xyz/assets/xpl.png', decimals: 18, verified: true},
     { symbol: 'WXPL', address: WXPL, logo: 'https://lindurz.xyz/assets/wxpl.png', decimals: 18, verified: true},
     { symbol: 'LDRZ', address: LDRZ, logo: 'https://lindurz.xyz/assets/ldrz.png', decimals: 18, verified: true},
-    { symbol: 'USDC', address: USDC, logo: 'https://lindurz.xyz/assets/usdc.png', decimals: 6, verified: true},
-    { symbol: 'USDT0', address: USDT0, logo: 'https://lindurz.xyz/assets/USDT0.png', decimals: 6, verified: true}
+    { symbol: 'USDT0', address: USDT0, logo: 'https://lindurz.xyz/assets/usdt0.png', decimals: 6, verified: true},
+    { symbol: 'WETH', address: WETH, logo: 'https://lindurz.xyz/assets/weth.png', decimals: 18, verified: true}
   ];
 
   let tokens = DEFAULT_TOKENS.slice();
