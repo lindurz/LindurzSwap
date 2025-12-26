@@ -3,17 +3,17 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Lindurz Exchange — Liquidity Pools (Ronin)</title>
+  <title>Lindurz — Berachain Liquidity Pools (Berachain)</title>
   <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <style>
     :root{
-      --primary: #1e5c9e;
-      --primary-dark: #164a80;
-      --accent: #4a9eff;
+      --primary: #F59E0B;    /* ORANGE - Berachain */
+      --primary-dark: #D97706;
+      --accent: #FBBF24;
       --text: #ffffff;
-      --muted: rgba(255,255,255,0.85);
-      --card-bg: rgba(14,30,52,0.85);
-      --card-border: rgba(30,92,158,0.12);
+      --muted: rgba(255,255,255,0.12);
+      --card-bg: rgba(28, 25, 23, 0.85); /* Dark brown background */
+      --card-border: rgba(245, 158, 11, 0.12);
       --glass: rgba(255,255,255,0.03);
       --warning: #ff9800;
       --danger: #f44336;
@@ -22,17 +22,17 @@
     *{box-sizing:border-box;margin:0;padding:0}
     body{
       font-family:'Kanit',sans-serif;
-      background:linear-gradient(180deg,#0a1525 0%, #0e1e33 100%);
+      background:linear-gradient(180deg, #1C1917 0%, #292524 100%); /* Bera brown gradient */
       color:var(--text);
       -webkit-font-smoothing:antialiased;
       min-height:100vh;
     }
-    .header{background: linear-gradient(135deg,var(--primary-dark),#1a4a7a);padding:12px 0;position:sticky;top:0;z-index:1300;border-bottom:1px solid rgba(0,0,0,0.25);}
+    .header{background: linear-gradient(135deg, var(--primary-dark), #B45309); padding:12px 0;position:sticky;top:0;z-index:1300;border-bottom:1px solid rgba(0,0,0,0.25);}
     .nav-container{max-width:1200px;margin:0 auto;padding:0 20px;display:flex;align-items:center;justify-content:space-between;gap:12px;position:relative;}
     .logo{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--text)}
     .logo img{width:40px;height:40px;border-radius:8px;object-fit:cover}
     .logo span{font-weight:700;font-size:18px}
-    .connect-wallet{background:var(--accent);color:#052017;border:none;padding:8px 12px;border-radius:10px;font-weight:700;cursor:pointer;z-index:1400;position:relative}
+    .connect-wallet{background:var(--accent);color:#1C1917;border:none;padding:8px 12px;border-radius:10px;font-weight:700;cursor:pointer;z-index:1400;position:relative}
     .menu-dot-btn{width:40px;height:40px;border-radius:10px;background:transparent;border:1px solid rgba(255,255,255,0.04);display:flex;align-items:center;justify-content:center;cursor:pointer;color:var(--text);font-size:18px;position:relative;z-index:1400;}
     .menu-dropdown{position:absolute;right:20px;top:64px;min-width:180px;background:rgba(255,255,255,0.03);backdrop-filter:blur(6px);border:1px solid rgba(255,255,255,0.04);border-radius:12px;padding:8px;box-shadow:0 12px 30px rgba(0,0,0,0.5);opacity:0;transform:translateY(-6px);pointer-events:none;transition:all .18s ease;z-index:1600;}
     .menu-dropdown.show{opacity:1;transform:translateY(0);pointer-events:auto}
@@ -48,7 +48,7 @@
     .token-block{background:rgba(255,255,255,0.02);border-radius:12px;padding:10px;margin-bottom:12px;border:1px solid transparent}
     .token-block:focus-within{border-color:var(--primary)}
     .input-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}
-    .label{color:#e0e9f5;font-size:13px}
+    .label{color:#FEF3C7;font-size:13px} /* Light orange text */
     .balance{color:var(--muted);font-size:13px;cursor:pointer}
     .row{display:flex;gap:12px;align-items:center}
     .select-wrap{position:relative;min-width:140px}
@@ -160,16 +160,16 @@
   <header class="header">
     <div class="nav-container">
       <a class="logo" href="swap.html">
-        <img src="https://lindurz.xyz/assets/lindurz.png" alt="Lindurz Exchange">
-        <span>Lindurz Exchange</span>
+        <img src="https://lindurz.xyz/assets/ldrz.png" alt="Lindurz">
+        <span>Lindurz</span>
       </a>
 
       <div style="display:flex;align-items:center;gap:8px;position:relative;">
         <button id="menuBtn" class="menu-dot-btn" title="Menu">⋮</button>
         <div id="menuDropdown" class="menu-dropdown" aria-hidden="true">
+          <div class="menu-item" data-href="index">Home</div>
           <div class="menu-item" data-href="swap.html">Swap</div>
           <div class="menu-item" data-href="liquidity.html">Liquidity</div>
-          <div class="menu-item" data-href="tokencreator.html">Create Token</div>
           <div class="menu-item" data-href="staking.html">Stake</div>
           <div class="menu-sep"></div>
           <div class="menu-item" data-href="docs.html">Docs</div>
@@ -223,9 +223,9 @@
             <div class="row">
               <div class="select-wrap">
                 <div id="fromSelect" class="select" tabindex="0" aria-haspopup="listbox" aria-expanded="false">
-                  <img id="fromLogo" src="https://lindurz.xyz/assets/ron.png" alt="">
+                  <img id="fromLogo" src="https://lindurz.xyz/assets/bera.png" alt="">
                   <div style="min-width:0">
-                    <div id="fromSymbol" class="symbol">RON</div>
+                    <div id="fromSymbol" class="symbol">BERA</div>
                   </div>
                   <div style="margin-left:auto;color:var(--muted)">▼</div>
                 </div>
@@ -318,20 +318,20 @@
 
       <aside class="panel" aria-label="Info">
         <h4 id="panelTitle">Pool Information</h4>
-        <div class="panel-row"><div>Pooled <span id="tokenASymbol">RON</span></div><div id="pooledTokenA">—</div></div>
+        <div class="panel-row"><div>Pooled <span id="tokenASymbol">BERA</span></div><div id="pooledTokenA">—</div></div>
         <div class="panel-row"><div>Pooled <span id="tokenBSymbol">LDRZ</span></div><div id="pooledTokenB">—</div></div>
         <div class="panel-row"><div>Your pool tokens</div><div id="poolTokens">—</div></div>
         <div class="panel-row"><div>Your pool share</div><div id="poolSharePercent">0%</div></div>
 
         <h4 style="margin-top:14px">Pool Stats</h4>
-        <div class="panel-row"><div><span id="tokenASymbol2">RON</span> per <span id="tokenBSymbol2">LDRZ</span></div><div id="priceA">—</div></div>
-        <div class="panel-row"><div><span id="tokenBSymbol3">LDRZ</span> per <span id="tokenASymbol3">RON</span></div><div id="priceB">—</div></div>
+        <div class="panel-row"><div><span id="tokenASymbol2">BERA</span> per <span id="tokenBSymbol2">LDRZ</span></div><div id="priceA">—</div></div>
+        <div class="panel-row"><div><span id="tokenBSymbol3">LDRZ</span> per <span id="tokenASymbol3">BERA</span></div><div id="priceB">—</div></div>
         <div class="panel-row"><div>Total Liquidity</div><div id="totalLiquidity">$—</div></div>
         <div class="panel-row"><div>24h Volume</div><div id="dailyVolume">$—</div></div>
 
         <h4 style="margin-top:14px">Quick Add Liquidity</h4>
-        <button class="pool-action pool-add" onclick="quickAddLiquidity('RON', 'LDRZ')">RON-LDRZ</button>
-        <button class="pool-action pool-add" onclick="quickAddLiquidity('RON', 'AXS')" style="margin-top:8px">RON-AXS</button>
+        <button class="pool-action pool-add" onclick="quickAddLiquidity('BERA', 'LDRZ')">BERA-LDRZ</button>
+        <button class="pool-action pool-add" onclick="quickAddLiquidity('BERA', 'USDC')" style="margin-top:8px">BERA-USDC</button>
         <button class="pool-action pool-add" onclick="quickAddLiquidity('LDRZ', 'USDC')" style="margin-top:8px">LDRZ-USDC</button>
       </aside>
     </div>
@@ -378,29 +378,29 @@
     </div>
   </div>
 
-  <footer>© 2025 Lindurz Exchange. Build on Ronin</footer>
+  <footer>© 2025 Lindurz. Built on Berachain</footer>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/ethers/5.7.1/ethers.umd.min.js"></script>
   <script>
-  // CONFIG
-  const ROUTER = '0xECd5BFE9044640D19dFd2Cdd4F360551d8E3E34C';
-  const WRON = '0x00eddd9621fb08436d0331c149d1690909a5906d';
-  const FACTORY = '0x7Cba03E40FCE39c55AC3280E4eedB9c5d733D35D';
-  const LDRZ = '0x82741ff5937933244eb562A4b396f8079F1de914';
-  const USDC = '0xF1815bd50389c46847f0Bda824eC8da914045D14';
-  const AXS = '0x6043921876841e8f421a4f9E748825DC6C430255';
-  const RPC = 'https://api.roninchain.com/rpc';
-  const CHAIN_ID_HEX = '0x7E4';
+  // CONFIG BERACHAIN - GANTI DENGAN ADDRESS ASLI
+  const ROUTER = '0xb19E8deB507DC3C0259CAd97D37Da4e66eaCE91d'; // ROUTER BERACHAIN
+  const WBERA = '0x0000000000000000000000000000000000000000'; // WRAPPED BERA
+  const FACTORY = '0x148Ab79e0E877d632d5a59563abE78461a1942E0'; // FACTORY BERACHAIN
+  const LDRZ = '0x0000000000000000000000000000000000000000'; // LINDURZ TOKEN
+  const USDC = '0x0000000000000000000000000000000000000000'; // USDC BERACHAIN
+  const USDT = '0x0000000000000000000000000000000000000000'; // USDT BERACHAIN
+  const RPC = 'https://rpc.berachain.com'; // RPC BERACHAIN
+  const CHAIN_ID_HEX = '0x...'; // CHAIN ID BERACHAIN
 
   // PERBAIKAN: Gunakan DexScreener untuk harga real-time
   const DEXSCREENER_API = 'https://api.dexscreener.com/latest/dex/tokens/';
   
   // Token addresses untuk DexScreener
   const DEXSCREENER_TOKENS = {
-    'RON': WRON, // Gunakan WRON untuk RON
+    'BERA': WBERA, // Gunakan WBERA untuk BERA
     'LDRZ': LDRZ,
-    'AXS': AXS,
-    'USDC': USDC
+    'USDC': USDC,
+    'USDT': USDT
   };
 
   const ROUTER_ABI = [
@@ -452,16 +452,16 @@
   let tokenPrices = {};
 
   const DEFAULT_TOKENS = [
-    { symbol: 'RON', address: 'RON_NATIVE', logo: 'https://lindurz.xyz/assets/ron.png', decimals: 18, verified: true},
-    { symbol: 'WRON', address: WRON, logo: 'https://lindurz.xyz/assets/wron.png', decimals: 18, verified: true},
-    { symbol: 'USDC', address: USDC, logo: 'https://lindurz.xyz/assets/usdc.png', decimals: 6, verified: true},
+    { symbol: 'BERA', address: 'BERA_NATIVE', logo: 'https://lindurz.xyz/assets/bera.png', decimals: 18, verified: true},
+    { symbol: 'WBERA', address: WBERA, logo: 'https://lindurz.xyz/assets/wbera.png', decimals: 18, verified: true},
     { symbol: 'LDRZ', address: LDRZ, logo: 'https://lindurz.xyz/assets/ldrz.png', decimals: 18, verified: true},
-    { symbol: 'AXS', address: AXS, logo: 'https://lindurz.xyz/assets/axs.png', decimals: 18, verified: true}
+    { symbol: 'USDC', address: USDC, logo: 'https://lindurz.xyz/assets/usdc.png', decimals: 6, verified: true},
+    { symbol: 'USDT', address: USDT, logo: 'https://lindurz.xyz/assets/usdt.png', decimals: 6, verified: true}
   ];
 
   let tokens = DEFAULT_TOKENS.slice();
   let selectedFrom = tokens[0];
-  let selectedTo = tokens[3];
+  let selectedTo = tokens[2];
 
   // State management
   let isCalculatingA = false;
@@ -534,8 +534,8 @@
     isCalculatingB = true;
 
     try {
-      const tokenA = selectedFrom.address === 'RON_NATIVE' ? WRON : selectedFrom.address;
-      const tokenB = selectedTo.address === 'RON_NATIVE' ? WRON : selectedTo.address;
+      const tokenA = selectedFrom.address === 'BERA_NATIVE' ? WBERA : selectedFrom.address;
+      const tokenB = selectedTo.address === 'BERA_NATIVE' ? WBERA : selectedTo.address;
 
       const pairAddress = await factory.getPair(tokenA, tokenB);
 
@@ -593,8 +593,8 @@
     isCalculatingA = true;
 
     try {
-      const tokenA = selectedFrom.address === 'RON_NATIVE' ? WRON : selectedFrom.address;
-      const tokenB = selectedTo.address === 'RON_NATIVE' ? WRON : selectedTo.address;
+      const tokenA = selectedFrom.address === 'BERA_NATIVE' ? WBERA : selectedFrom.address;
+      const tokenB = selectedTo.address === 'BERA_NATIVE' ? WBERA : selectedTo.address;
 
       const pairAddress = await factory.getPair(tokenA, tokenB);
 
@@ -729,7 +729,7 @@
       opt.innerHTML = `<img src="${t.logo}" style="width:28px;height:28px;border-radius:6px;margin-right:8px"/>
                        <div style="flex:1;min-width:0">
                          <div style="font-weight:700">${t.symbol} ${statusBadge}</div>
-                         <div class="token-addr">${t.address === 'RON_NATIVE' ? 'Native Token' : (t.address.substring(0,6)+'...'+t.address.substring(38))}</div>
+                         <div class="token-addr">${t.address === 'BERA_NATIVE' ? 'Native Token' : (t.address.substring(0,6)+'...'+t.address.substring(38))}</div>
                        </div>
                        <div id="bal-${t.symbol}" style="color:var(--muted);font-size:13px">—</div>`;
       opt.addEventListener('click', (e)=>{ e.stopPropagation(); selectToken(type, t); });
@@ -928,13 +928,13 @@
   async function selectToken(type, token){
     if(type==='from'){ 
       selectedFrom = token; 
-      $('fromLogo').src = token.logo; 
-      $('fromSymbol').textContent = token.symbol; 
+      $('fromLogo').src = selectedFrom.logo; 
+      $('fromSymbol').textContent = selectedFrom.symbol; 
       $('fromList').style.display = 'none'; 
     } else { 
       selectedTo = token; 
-      $('toLogo').src = token.logo; 
-      $('toSymbol').textContent = token.symbol; 
+      $('toLogo').src = selectedTo.logo; 
+      $('toSymbol').textContent = selectedTo.symbol; 
       $('toList').style.display = 'none'; 
     }
     
@@ -955,7 +955,7 @@
   const connectBtn = $('connectBtn');
   connectBtn.addEventListener('click', connectWallet);
   
-  async function ensureRoninChain(){
+  async function ensureBeraChain(){
     if(!window.ethereum) return false;
     try{
       const net = await window.ethereum.request({ method: 'eth_chainId' });
@@ -965,7 +965,7 @@
           return true;
         }catch(switchErr){
           if(switchErr.code === 4902){
-            await window.ethereum.request({ method: 'wallet_addEthereumChain', params: [{ chainId: CHAIN_ID_HEX, chainName: 'Ronin', rpcUrls:[RPC], nativeCurrency:{name:'RON',symbol:'RON',decimals:18}, blockExplorerUrls:['https://app.roninchain.com/'] }] });
+            await window.ethereum.request({ method: 'wallet_addEthereumChain', params: [{ chainId: CHAIN_ID_HEX, chainName: 'Berachain', rpcUrls:[RPC], nativeCurrency:{name:'BERA',symbol:'BERA',decimals:18}, blockExplorerUrls:['https://berascan.io/'] }] });
             return true;
           }
           return false;
@@ -973,7 +973,7 @@
       }
       return true;
     }catch(e){
-      console.error('ensureRoninChain', e);
+      console.error('ensureBeraChain', e);
       return false;
     }
   }
@@ -981,7 +981,7 @@
   async function connectWallet(){
     if(!window.ethereum){ alert('Please install MetaMask'); return; }
     try{
-      await ensureRoninChain();
+      await ensureBeraChain();
       const accounts = await window.ethereum.request({ method:'eth_requestAccounts' });
       account = accounts[0];
       provider = new ethers.providers.Web3Provider(window.ethereum);
@@ -1007,8 +1007,8 @@
       console.log('chainChanged', chainId);
       if(chainId !== CHAIN_ID_HEX){
         setStatus('Wrong chain — switching...');
-        try{ await ensureRoninChain(); setStatus('Switched to Ronin'); location.reload(); } catch(e){ setStatus('Please switch to Ronin chain in wallet'); }
-      } else { setStatus('Connected to Ronin'); location.reload(); }
+        try{ await ensureBeraChain(); setStatus('Switched to Berachain'); location.reload(); } catch(e){ setStatus('Please switch to Berachain chain in wallet'); }
+      } else { setStatus('Connected to Berachain'); location.reload(); }
     });
     window.ethereum.on('accountsChanged', (accs)=>{ 
       if(accs && accs.length>0){ 
@@ -1033,7 +1033,7 @@
   async function updateBalances(){
     if(!provider || !account) return;
     try{
-      if(selectedFrom.address === 'RON_NATIVE'){
+      if(selectedFrom.address === 'BERA_NATIVE'){
         const b = await provider.getBalance(account);
         $('fromBalance').textContent = parseFloat(ethers.utils.formatEther(b)).toFixed(4);
         $('btnMax').disabled = false;
@@ -1044,7 +1044,7 @@
         $('fromBalance').textContent = parseFloat(ethers.utils.formatUnits(b,d)).toFixed(4);
         $('btnMax').disabled = false;
       }
-      if(selectedTo.address === 'RON_NATIVE'){
+      if(selectedTo.address === 'BERA_NATIVE'){
         const b2 = await provider.getBalance(account);
         $('toBalance').textContent = parseFloat(ethers.utils.formatEther(b2)).toFixed(4);
       }else{
@@ -1061,7 +1061,7 @@
     for(const t of tokens){ 
       try{ 
         let bal='0'; 
-        if(t.address === 'RON_NATIVE'){ 
+        if(t.address === 'BERA_NATIVE'){ 
           const b = await provider.getBalance(account); 
           bal = parseFloat(ethers.utils.formatEther(b)).toFixed(4); 
         } else { 
@@ -1082,7 +1082,7 @@
   async function setMax(){ 
     if(!account || !provider){ await connectWallet(); return; } 
     try{ 
-      if(selectedFrom.address === 'RON_NATIVE'){ 
+      if(selectedFrom.address === 'BERA_NATIVE'){ 
         const b = await provider.getBalance(account); 
         const usable = b.mul(95).div(100); 
         $('fromAmount').value = ethers.utils.formatEther(usable); 
@@ -1164,8 +1164,8 @@
 
       await updateUSDValues();
 
-      const tokenA = selectedFrom.address === 'RON_NATIVE' ? WRON : selectedFrom.address;
-      const tokenB = selectedTo.address === 'RON_NATIVE' ? WRON : selectedTo.address;
+      const tokenA = selectedFrom.address === 'BERA_NATIVE' ? WBERA : selectedFrom.address;
+      const tokenB = selectedTo.address === 'BERA_NATIVE' ? WBERA : selectedTo.address;
 
       currentPair = await factory.getPair(tokenA, tokenB);
 
@@ -1260,10 +1260,10 @@
   }
 
   // =============================================
-  // TVL STATS
-  // =============================================
+// TVL STATS (Lanjutan dari yang terputus)
+// =============================================
 
-  async function updateTVLStats() {
+async function updateTVLStats() {
     if (!provider) return;
 
     try {
@@ -1271,10 +1271,10 @@
       const totalPairs = await factory.allPairsLength();
 
       const majorPairs = [
-        { tokenA: 'RON', tokenB: 'LDRZ' },
-        { tokenA: 'RON', tokenB: 'AXS' },
-        { tokenA: 'WRON', tokenB: 'LDRZ' },
-        { tokenA: 'LDRZ', tokenB: 'USDC' }
+        { tokenA: 'BERA', tokenB: 'LDRZ' },
+        { tokenA: 'BERA', tokenB: 'USDC' },
+        { tokenA: 'WBERA', tokenB: 'USDC' },
+        { tokenA: 'USDC', tokenB: 'LDRZ' }
       ];
 
       for (const pair of majorPairs) {
@@ -1284,8 +1284,8 @@
 
           if (!tokenA || !tokenB) continue;
 
-          const tokenAAddr = tokenA.address === 'RON_NATIVE' ? WRON : tokenA.address;
-          const tokenBAddr = tokenB.address === 'RON_NATIVE' ? WRON : tokenB.address;
+          const tokenAAddr = tokenA.address === 'BERA_NATIVE' ? WBERA : tokenA.address;
+          const tokenBAddr = tokenB.address === 'BERA_NATIVE' ? WBERA : tokenB.address;
 
           const pairAddress = await factory.getPair(tokenAAddr, tokenBAddr);
           if (!pairAddress || pairAddress === '0x0000000000000000000000000000000000000000') continue;
@@ -1497,8 +1497,8 @@
       const amountADesired = ethers.utils.parseUnits(fromAmt, selectedFrom.decimals);
       const amountBDesired = ethers.utils.parseUnits(toAmt, selectedTo.decimals);
 
-      const addressA = (selectedFrom.address === 'RON_NATIVE') ? WRON : selectedFrom.address;
-      const addressB = (selectedTo.address === 'RON_NATIVE') ? WRON : selectedTo.address;
+      const addressA = (selectedFrom.address === 'BERA_NATIVE') ? WBERA : selectedFrom.address;
+      const addressB = (selectedTo.address === 'BERA_NATIVE') ? WBERA : selectedTo.address;
 
       const routerWithSigner = new ethers.Contract(ROUTER, ROUTER_ABI, signer);
       const factoryWithSigner = new ethers.Contract(FACTORY, FACTORY_ABI, signer);
@@ -1541,7 +1541,7 @@
         setStatus('Creating new pool...');
         try {
           const txCreate = await factoryWithSigner.createPair(addressA, addressB);
-          $('txLink').innerHTML = `<a href="https://app.roninchain.com/tx/${txCreate.hash}" target="_blank" style="color:var(--accent)">Creating Pair...</a>`;
+          $('txLink').innerHTML = `<a href="https://berascan.io/tx/${txCreate.hash}" target="_blank" style="color:var(--accent)">Creating Pair...</a>`;
           await txCreate.wait();
           showToast('Pool created successfully!');
           setStatus('Pool created successfully!');
@@ -1558,7 +1558,7 @@
       const amountBMin = amountBDesired.mul(99).div(100);
       const deadline = Math.floor(Date.now() / 1000) + 60 * 20;
 
-      if (selectedFrom.address === 'RON_NATIVE' && selectedTo.address !== 'RON_NATIVE') {
+      if (selectedFrom.address === 'BERA_NATIVE' && selectedTo.address !== 'BERA_NATIVE') {
         await ensureApproved(selectedTo.address, amountBDesired);
         setStatus('Sending addLiquidityETH (native -> token)...');
         const tx = await routerWithSigner.addLiquidityETH(
@@ -1570,10 +1570,10 @@
           deadline,
           { value: amountADesired, gasLimit: 3000000 }
         );
-        $('txLink').innerHTML = `<a href="https://app.roninchain.com/tx/${tx.hash}" target="_blank" style="color:var(--accent)">View on Explorer</a>`;
+        $('txLink').innerHTML = `<a href="https://berascan.io/tx/${tx.hash}" target="_blank" style="color:var(--accent)">View on Explorer</a>`;
         await tx.wait();
 
-      } else if (selectedTo.address === 'RON_NATIVE' && selectedFrom.address !== 'RON_NATIVE') {
+      } else if (selectedTo.address === 'BERA_NATIVE' && selectedFrom.address !== 'BERA_NATIVE') {
         await ensureApproved(selectedFrom.address, amountADesired);
         setStatus('Sending addLiquidityETH (token -> native)...');
         const tx = await routerWithSigner.addLiquidityETH(
@@ -1585,7 +1585,7 @@
           deadline,
           { value: amountBDesired, gasLimit: 3000000 }
         );
-        $('txLink').innerHTML = `<a href="https://app.roninchain.com/tx/${tx.hash}" target="_blank" style="color:var(--accent)">View on Explorer</a>`;
+        $('txLink').innerHTML = `<a href="https://berascan.io/tx/${tx.hash}" target="_blank" style="color:var(--accent)">View on Explorer</a>`;
         await tx.wait();
 
       } else {
@@ -1603,7 +1603,7 @@
           deadline,
           { gasLimit: 3000000 }
         );
-        $('txLink').innerHTML = `<a href="https://app.roninchain.com/tx/${tx.hash}" target="_blank" style="color:var(--accent)">View on Explorer</a>`;
+        $('txLink').innerHTML = `<a href="https://berascan.io/tx/${tx.hash}" target="_blank" style="color:var(--accent)">View on Explorer</a>`;
         await tx.wait();
       }
 
@@ -1854,8 +1854,8 @@
 
       setStatus('Removing liquidity...');
 
-      const token0IsNative = currentRemovePool.token0 === WRON;
-      const token1IsNative = currentRemovePool.token1 === WRON;
+      const token0IsNative = currentRemovePool.token0 === WBERA;
+      const token1IsNative = currentRemovePool.token1 === WBERA;
 
       let tx;
 
@@ -1886,7 +1886,7 @@
         );
       }
 
-      $('txLink').innerHTML = `<a href="https://app.roninchain.com/tx/${tx.hash}" target="_blank" style="color:var(--accent)">View on Explorer</a>`;
+      $('txLink').innerHTML = `<a href="https://berascan.io/tx/${tx.hash}" target="_blank" style="color:var(--accent)">View on Explorer</a>`;
       setStatus('Submitted — waiting confirmation...');
 
       const receipt = await tx.wait();
@@ -2014,7 +2014,7 @@
   // =============================================
 
   async function ensureApproved(tokenAddress, neededAmount) {
-    if (!tokenAddress || tokenAddress === 'RON_NATIVE') return;
+    if (!tokenAddress || tokenAddress === 'BERA_NATIVE') return;
 
     try {
       const tokenContract = new ethers.Contract(tokenAddress, ERC20_ABI, signer);
