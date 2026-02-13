@@ -1,12 +1,12 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.30;
 
-contract VitrumToken {
-    // Basic token information - DIUBAH ke Vitrum VTX
+contract Vitrum {
+    // Basic token information
     string public constant name = "Vitrum";
     string public constant symbol = "VTX";
     uint8 public constant decimals = 18;
-    uint256 public constant totalSupply = 234_000 * 10**18; // 234 ribu VTX (Decimal 18)
+    uint256 public constant totalSupply = 234_000 * 10**18;
 
     // Balances and allowances
     mapping(address => uint256) private _balances;
@@ -31,7 +31,7 @@ contract VitrumToken {
         _reentrancyLock = false;
     }
 
-    // Constructor - deploy dengan semua supply ke deployer
+    // Constructor
     constructor() {
         owner = msg.sender;
         _balances[msg.sender] = totalSupply;
